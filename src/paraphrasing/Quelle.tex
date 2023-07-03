@@ -1,0 +1,71 @@
+\titleformat{\section}[frame]
+	{\normalfont \sffamily}
+	{
+		\filright
+		\footnotesize
+		\enspace Quelle \thesection \enspace
+	}
+	{8pt}
+	{\filcenter \bfseries}
+	[]
+\titleformat{\subsection}[hang]
+	{\normalfont \bfseries}
+	{\thesubsection}
+	{1em}
+	{}
+	[]
+\titleformat{\subsubsection}[hang]
+	{\normalfont \bfseries}
+	{\enspace \thesubsubsection}
+	{.5em}
+	{}
+	[]
+\titleformat{\paragraph}[hang]
+	{\normalfont \bfseries}
+	{}
+	{.5em}
+	{\enspace \enspace}
+	[]
+
+
+	%\titleformat{\secitioningcommand}[shape]
+	%    {format}
+	%    {label}
+	%    {sep}
+	%    {before-code}
+	%    [after-code]
+
+
+	%Shapes:
+	    %hang is the default value, with a hanging label. (Like the standard \section.)
+
+	    %block typesets the whole title in a block (a paragraph) without additional formatting. Useful in centered titles 4 and special formatting (including graphic tools such as picture, pspicture, etc.)
+
+	    %display puts the label in a separate paragraph. (Like the standard \chapter.)
+
+	    %runin A run-in title, like the standard \paragraph.5
+
+	    %leftmargin puts the title at the left margin. Titles at the very end of a page will be moved to the next one and will not stick out in the bottom margin, which means large titles can lead to underfull pages.6 In this case you may increase the stretchability of the page elements, use \raggedbottom or use the package option nobottomtitles described below. Since the mechanism used is independent from that of the margin pars, they can overlap. A deprecated synonymous is margin.
+
+	    %rightmargin is like leftmargin but at the right margin.
+
+	    %drop wraps the text around the title, provided the first paragraph is longer than the title (if not, they overlap). The comments in leftmargin also apply here.
+
+	    %wrap is quite similar to drop. The only difference is while the space reserved in drop for the title is fixed, in wrap is automatically readjusted to the longest line. The limitations explained below related to calcwidth also apply here.
+
+	    %frame Similar to display, but the title will be framed.
+
+	%format
+	    %The format is the format to be applied to the whole title—label and text. This part cancontain vertical material (and horizontal with some shapes) which is typeset just after the space above the title.
+
+	%label
+	    %The label is defined in 〈label 〉. You may leave it empty if there is no section label at that level, but this is not recommended because by doing so the number is not suppressed in the table of contents and running heads.
+
+	%sep
+	    %The sep is the horizontal separation between label and title body and must be a length (it must not be empty). This space is vertical in display shape; in frame it is the distance from text to frame. Both 〈label 〉 and 〈sep〉 are ignored in starred versions of sectioning commands. If you are using picture and the like, set this parameter to 0 pt.
+
+	%before-code
+	    %The before-code is code preceding the title body. The very last command can take an argument, which is the title text.7 However, with the package option explicit the title must be given explicitly with #1 (see below). Penalties in this argument may lead to unexpected results.
+
+	%after-code
+	    %The after-code is code following the title body. The typeset material is in vertical mode with hang, block and display; in horizontal mode with runin and leftmargin ( 2.7 with the latter, at the beginning of the paragraph). Otherwise is ignored. Penalties in this argument may lead to unexpected results.

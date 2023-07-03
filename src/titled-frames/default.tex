@@ -1,0 +1,12 @@
+\renewcommand{\setEnvironmentStyle}[1]{%
+    \newmdenv[%
+        roundcorner=5pt,
+        subtitlebelowline=true,
+        subtitleaboveline=true,
+        subtitlebackgroundcolor=yellow!70!white,
+        backgroundcolor=blue!20!white,
+        frametitle={\getFrameTitle},
+        frametitlerule=true,
+        frametitlebackgroundcolor=yellow!70!white,
+    ]{#1} %#1 ist der aus titled-framed-environment übergebene Style der Umgebung. z.B. default
+}

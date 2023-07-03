@@ -1,0 +1,61 @@
+\setul{0.3ex}{0.3ex} %1te ist der Abstand zum Text 2te ist die Dicke der linie. ex ist eine von der Buchstanbengröße abhängige Maßeinheit.
+
+%Hier definieren wir die unterstreichende Linie.
+\newcommand{\numbering}{}			% Ist die Variable, in der immer die Kapitelnummer gespeichert wird
+\newcommand{\setNumbering}[1]{		% Hier wird diese gesetzt, da wir sie nicht als Parameter übergeben können.
+	\renewcommand{\numbering}{#1}	% Also übergeben an den ulined Befehl. Da wir nacher ja \ulined verwenden.
+}
+\newcommand{\getColor}{}			% Ist die Variable, in der die Farbe gespeichert wird.
+\newcommand{\setColor}[1]{			% Hier wird diese gesetzt, da wir sie nicht als Parameter übergeben können.
+	\renewcommand{\getColor}{#1}	% Also übergeben an den ulined Befehl. \ulined nimmt das was dahinter steht.
+}
+\newcommand{\ulined}[1]{%
+    \setLength{\numbering \hspace{0.5ex} #1}%Hier berechnen wir die Länge der gegebenen Überschrift. paraphrasing.tex
+    	\begin{tikzpicture}
+        	\draw[color=\getColor!50!, fill=\getColor!50!]	%Hier wird die Farbe für den Hintergrund gemischt.
+				(-1ex + -0.5 * \length, -0.05 em) -- 	% Das ist der linke Punkt des Polygons. -1ex für gleichen Abs
+				(0.5 * \length, -0.05 em) --			% Das ist der rechte Punkt der oberen Linie
+				(0.55 * \length, -0.75 ex) --			% Das ist der rechte Punkt der unteren Linie. 0.55 für Schräg
+				(-0.5 * \length, -0.75 ex) --			% Das ist der linke Punkt der unteren Linie.
+				cycle;									% Damit wir wieder zum linken Punkt der oberen Linie springen
+        	\node[inner sep=1pt, outer sep=0pt] (Text) {% Der Text der Überschrift wird als Knoten gespeichert.
+				{
+					\color{\getColor!70!black} \numbering	% Hier wird die Farbe der Nummerierung festgelegt.
+				}
+				\hspace{0.5ex}	% Ist für den Abstand zwischen Nummerierung und Überschrift wichtig.
+				#1	% In #1 befindet sich der Text der Überschrift
+			};
+    	\end{tikzpicture}
+}
+%Hier stellen wir nur noch ein, dass die oben definierte linie zum untersteichen verwendet werden soll.
+
+\definecolor{myRed}{RGB}{205,85,85}
+\titleformat{\section}[hang]
+	{\vspace{-3ex} \normalfont \bfseries \Large}
+	{}
+	{-8ex}
+	{\setColor{myRed} \setNumbering{\thesection} \ulined}
+	[\vspace{-2ex}]
+
+\definecolor{myBlue}{RGB}{30,144,255}
+\titleformat{\subsection}[hang]
+	{\vspace{-2.75ex} \normalfont \bfseries \large}
+	{}
+	{-6ex}
+	{\setColor{myBlue} \setNumbering{\thesubsection} \ulined}
+	[\vspace{-1.5ex}]
+
+\definecolor{myGreen}{RGB}{46,139,87}
+\titleformat{\subsubsection}[hang]
+	{\vspace{-2.5ex} \normalfont \bfseries}
+	{}
+	{-4ex}
+	{\setColor{myGreen} \setNumbering{\thesubsubsection} \ulined}
+	[\vspace{-1.5ex}]
+
+\titleformat{\paragraph}[hang]
+	{\normalfont \bfseries}
+	{}
+	{.5em}
+	{\enspace \enspace}
+	[]

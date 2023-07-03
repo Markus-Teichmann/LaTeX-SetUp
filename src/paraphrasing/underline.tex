@@ -1,0 +1,34 @@
+
+
+\definecolor{myRed}{RGB}{205,85,85}
+\setul{0.3ex}{0.3ex} %1te ist der Abstand zum Text 2te ist die Dicke der linie. ex ist eine von der Buchstanbengröße abhängige Maßeinheit.
+
+\titleformat{\section}[hang]
+	{\setulcolor{myRed} \normalfont \bfseries \Large}
+	{\color{myRed} \ul{\thesection \enspace}}
+	{0em}
+	{\ul}
+	[]
+
+\definecolor{myBlue}{RGB}{30,144,255}
+\titleformat{\subsection}[hang]
+	{\setulcolor{myBlue} \normalfont \bfseries \normalsize}
+	{\color{myBlue} \ul{\thesubsection \enspace}}
+	{0em}
+	{\ul}
+	[]
+
+\definecolor{myGreen}{RGB}{46,139,87}
+\titleformat{\subsubsection}[hang]
+	{\setulcolor{myGreen} \normalfont \bfseries}
+	{\enspace \color{myGreen} \ul{\thesubsubsection \enspace}}
+	{0em}
+	{\ul}
+	[]
+
+\titleformat{\paragraph}[hang]
+	{\normalfont \bfseries}
+	{}
+	{.5em}
+	{\enspace \enspace}
+	[]

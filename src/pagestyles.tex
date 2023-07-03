@@ -1,0 +1,49 @@
+\newcommand{\setPagestylePath}[1]{% Wird hier auch zum initialisieren der "Variablen verwendet."
+    \newcommand{\pagestylePath}{#1}
+    \newcommand{\defaultFooterRuleWidth}{0pt}
+    \newcommand{\defaultHeaderRuleWidth}{0pt}
+    \newcommand{\sectionName}{}
+    \newcommand{\subSectionName}{}
+}
+\newcommand{\setPagestyle}[1]{%
+    \input{./\pagestylePath/#1}
+    \thispagestyle{#1} %Brauchen wir noch für die erste Seite. (27.05.22)
+    \AtBeginShipout { %Sollte den folgenden Code auf jeder Seite ausführen und damit den Pagestyle Bug beheben(27.05.22)
+        \thispagestyle{#1}
+    }
+}
+%\setThisPagestyle ist aktuell nicht verwendbar, da AtBeginShipout immer wieder den Pagestyle überschreibt.
+% Das ist zwar ein Problem aber eigentlich nur beim Anhang. Dazu haben wir schon eine Lösung gefunden.
+% Siehe commands anhang.(27.05.22)
+\newcommand{\setThisPagestyle}[1]{%
+    \input{./\pagestylePath/#1}
+    \thispagestyle{#1}
+}
+\newcommand{\setDefaultHeaderRuleWidth}[1]{%
+    \renewcommand{\defaultHeaderRuleWidth}{#1}
+}
+\newcommand{\setDefaultFooterRuleWidth}[1]{%
+    \renewcommand{\defaultFooterRuleWidth}{#1}
+}
+\newcommand{\newSection}[1]{%
+    \section{#1}
+    \resetTitledFrameEnvironmentCounters
+    \renewcommand{\sectionName}{#1}
+    %Ergibt natürlich nur dann Sinn, wenn wir auch die Titled-Framed-Environments verwenden.
+}
+\newcommand{\newSectionStar}[1]{%
+    \section*{#1}
+    \resetTitledFrameEnvironmentCounters
+    \renewcommand{\sectionName}{#1}
+}
+\newcommand{\newSubSection}[1]{%
+    \subsection{#1}
+    \resetTitledFrameEnvironmentCounters
+    \renewcommand{\subSectionName}{#1}
+    %Ergibt natürlich nur dann Sinn, wenn wir auch die Titled-Framed-Environments verwenden.
+}
+\newcommand{\newSubSectionStar}[1]{%
+    \subsection*{#1}
+    \resetTitledFrameEnvironmentCounters
+    \renewcommand{\subSectionName}{#1}
+}

@@ -1,0 +1,8 @@
+\newcommand{\setCodestylePath}[1]{%
+    \newcommand{\codestylePath}{#1}
+}
+
+\newcommand{\setCodestyle}[1]{%
+    \input{./\codestylePath/#1}
+    \lstset{style=#1}
+}

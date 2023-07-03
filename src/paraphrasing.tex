@@ -1,0 +1,29 @@
+%\usepackage[T1]{fontenc}
+%\usepackage{tgadventor}
+%\usepackage{tgheros}
+%\usepackage{helvet}
+%\usepackage{tgcursor}
+%\usepackage{courier}
+%\usepackage{xcharter}
+%\usepackage{bookman}
+%\usepackage{palatino}
+%\usepackage{fourier}
+%\usepackage{mathptmx}
+%\usepackage{lmodern}
+%\usepackage{tgbonum}
+%\usepackage{titlesec}
+\newcommand{\setParaphrasingPath}[1]{%
+    \newcommand{\paraphrasingPath}{#1}
+    %Da wir später z.B. in PolygonUnderline die Länge eines Arguments brauchen:
+    %Und da wir die Länge vermutlich sonst nicht brauchen taucht das sonst nicht auf.
+    \newlength{\internerVariablenNameLength}
+    \newcommand{\length}{}
+}
+%Diesen Befehl müssen wir leider auslagern. Die dafür wichtigen Variablen wurden schon in den Zeilen 20 und 21 dekliniert.
+\newcommand{\setLength}[1]{
+    \settowidth{\internerVariablenNameLength}{#1}
+    \renewcommand{\length}{\the\internerVariablenNameLength}
+}
+\newcommand{\setParaphrasing}[1]{%
+    \input{./\paraphrasingPath/#1}
+}

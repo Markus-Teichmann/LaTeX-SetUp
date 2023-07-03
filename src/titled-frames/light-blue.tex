@@ -1,0 +1,36 @@
+\renewcommand{\setEnvironmentStyle}[1]{%
+    %Title-Section-Color-Settings:
+    %\definecolor{frametitlerulecolor}{RGB}{1,0.5,0}
+    \definecolor{frametitlebackgroundcolor}{RGB}{184,217,232}
+    %Body-Section-Color-Settings
+    \definecolor{backgroundcolor}{RGB}{242,248,251}
+    \definecolor{linecolor}{RGB}{184,217,232}
+    %\definecolor{innerlinecolor}{RGB}{1,0.5,0}
+    %\definecolor{middellinecolor}{RGB}{1,0.5,0}
+    %\definecolor{outerlinecolor}{RGB}{1,0.5,0}
+    \newmdenv[%
+    %General-Settings:
+        frametitle={\getFrameTitle},
+        %roundcorner=10pt,
+        subtitlebelowline=true,
+        %subtitleaboveline=true,
+        %subtitlebackgroundcolor=black!20!white,
+    %
+    %Title-Section-Settings:
+        frametitlerule=true,
+        %frametitlerulecolor=frametitlerulecolor,
+        frametitlerulewidth=2pt,
+        frametitlebackgroundcolor=frametitlebackgroundcolor,
+    %
+    %Body-Section-Settings:
+        backgroundcolor=backgroundcolor,
+        linecolor=linecolor,
+        linewidth=2pt,
+        %innerlinecolor=innerlinecolor,
+        %middellinecolor=middellinecolor,
+        %outerlinecolor=outerlinecolor,
+        %innerlinewidth=,
+        %middellinewidth=,
+        %outerlinewidth=,
+    ]{#1} %#1 ist der aus titled-framed-environment übergebene Style der Umgebung. z.B. light-blue
+}

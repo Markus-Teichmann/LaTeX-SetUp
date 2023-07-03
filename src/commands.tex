@@ -1,0 +1,112 @@
+%\newcommand{\enlargePage}[1]{
+%    \newgeometry{top=4.5cm - #1/2, bottom=4.5cm - #1/2}
+%}
+%\newcommand{\restorePageSize}{
+%    \clearpage
+%    \restoregeometry
+%}
+
+\renewcommand{\mark}[1]{\glqq #1\grqq{}}
+\renewcommand{\quote}[3]{%
+    \mark{#1}
+    \hspace{-1ex}
+    \footnotemark
+    \footnotetext{%
+        \citeauthor{#2}: #3 \cite{#2} \citeurl{#2}
+    }
+}
+\newcommand{\source}[2]{%
+    \footnotemark
+    \footnotetext{%
+        \citeauthor{#1}: #2 \cite{#1} \citeurl{#1}
+    }
+}
+%\newcommand{\bold}[1]{\textbf{#1}}
+
+%Um das richtige Datumsformat zu haben
+\newcommand{\leadingzero}[1]{\ifnum #1<10 0\the#1\else\the#1\fi}
+\newcommand{\datumVonHeute}{\leadingzero{\day}.\leadingzero{\month}.\the\year}
+\newcommand{\anhang}{
+    \newpage
+    \refstepcounter{section}%
+    \setcounter{subsection}{0}
+    \setcounter{subsubsection}{0}
+    \addcontentsline{toc}{section}{\protect\numberline{\thesection}{Anhang}}
+    \renewcommand{\subSectionName}{}
+    \renewcommand{\sectionName}{Anhang}
+    \input{main/anhang}
+}
+\newcommand{\lit}{
+    \newpage
+    \refstepcounter{section}%
+    \setcounter{subsection}{0}
+    \setcounter{subsubsection}{0}
+    \addcontentsline{toc}{section}{\protect\numberline{\thesection}{Literatur}}
+    \renewcommand{\subSectionName}{}
+    \renewcommand{\sectionName}{Literatur}
+    \printbibliography
+}
+\newcommand{\checkedSquare}{\mbox{\ooalign{$\checkmark$\cr\hidewidth$\square$\hidewidth\cr}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\footQuote}[3]{\glqq #1\grqq{}\footcite[#3]{#2}}
+\newcommand{\newFootRef}[3]{\glqq #1\grqq{} \hspace{-1.25ex} \footnotemark \footnotetext{\hspace{1ex} \hyperref[#3]{#2}}}
+\newcommand{\toroman}[1]{\romannumeral #1 }
+\newcommand{\toRoman}[1]{\MakeUppercase{\romannumeral #1}}
+\renewcommand{\newline}{\vspace{1em}\\}
+\newcommand{\newQuote}[3]{\glqq #1\grqq{}\footcite[#3]{#2}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor{}}
+
+\newcommand{\luecke}[1]{
+    %\hspace{0,1cm}
+    \underline{
+        %\hspace{0,25cm}
+        \hphantom{#1}
+        %\hspace{0,25cm}
+    }
+    \hspace{0.5ex}
+}
+
+%Hier ergänze ich noch eine Varriante, wie ein Zitat zu Beginn eines Kapitels aussehen könnte.
+\newenvironment{chapquote}[2][2em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+
+\DeclareUnicodeCharacter{202F}{FIX ME!!!!}
+
+%Wurden in init verschoben könnten aber auch hier verwendet werden richtiger Anker ist wichtig.
+
+% Nur eine Beta-Version hier muss noch weiter dran gearbeitet werden. Winkel stimmt nicht.
+%
+%%\usetikzlibrary{intersections}
+%%\usetikzlibrary{calc}
+%\newcommand{\test}[4]{
+%    \path[name path = rim] (#2) circle (1cm);
+%    \path[name path = toA] (#2) -- (#1);
+%    \path[name path = toB] (#2) -- (#3);
+%    \path[name intersections = {of = rim and toA}];
+%    \path[name intersections = {of = rim and toB}];
+%    \pgfmathanglebetweenpoints{%
+%        \pgfpointanchor{intersection-1}{center}
+%    }
+%    {%
+%        \pgfpointanchor{intersection-2}{center}
+%    }
+%    \draw[dashed, very thick, red] (isectionA) arc (\pgfmathresult:360-\pgfmathresult:#4);
+%}
+%
+
+%\tiny
+%\scriptsize
+%\footnotesize
+%\small
+%\normalsize
+%\large
+%\Large
+%\LARGE
+%\huge
+%\Huge
+%\slshape %\sansserief schrift

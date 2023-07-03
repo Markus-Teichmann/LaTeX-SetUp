@@ -1,0 +1,22 @@
+\usepackage[backend=biber, hyperref, style=numeric, citestyle=numeric]{biblatex}
+\usepackage{csquotes}
+
+%Für die Abtrennung von Fußnoten zum restlichen Text.
+\renewcommand{\footnoterule}{\noindent\smash{\rule[3pt]{\textwidth}{0.4pt}}}
+
+%Für die neue Zeile vor der URL
+%Falls in der Lteratur url's angegeben werden.
+%%!Achtung, das macht nur bei wirklich langen Url's sinn.
+%\appto{\biburlsetup}{\renewcommand*{\UrlFont}{\newline\normalfont\itshape}}
+
+%Einbinden des Literaturverzeichnisses:
+\newcommand{\setLibraryPath}[1]{%
+    \newcommand{\libraryPath}{#1}
+}
+
+\newcommand{\addlibresource}[1]{%
+    \addbibresource{./\libraryPath/#1.bib}
+}
+
+%Wichtig!
+%Nach dem ergänzen einer Quelle immer biber main ausführen.

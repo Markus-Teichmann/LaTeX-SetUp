@@ -1,0 +1,31 @@
+\newcolumntype{L}{>{\raggedright \arraybackslash}X}
+\newcolumntype{A}{>{\raggedright}p{0.85\linewidth}}
+\newcolumntype{B}{>{\raggedleft}p{0.85\linewidth}}
+\newcolumntype{R}{>{\raggedleft \arraybackslash}X}
+\newcommand{\pA}[2]{
+    \multicolumn{2}{A}{\textbf{#1}} & \\
+    \multicolumn{2}{@{}A}{#2} & \\
+}
+\newcommand{\pB}[2]{
+    & \multicolumn{2}{B}{\textbf{#1}}\\
+    & \multicolumn{2}{B@{}}{#2} \\
+}
+\newenvironment{Diskussion}[1][]
+{
+    %begin-code
+    \renewcommand{\arraystretch}{1.4}
+    \xltabular[c]{\linewidth}{@{}Lp{0.7\linewidth}R@{}}
+        %wenn Überschrift in #1: ansonsten nicht.
+        \ifx &#1&
+        \else
+            \multicolumn{3}{@{}p{\linewidth}}{\textbf{#1}}\\
+        \fi
+        %\textbf{Pro} & & \textbf{Contra}\\
+    \endfirsthead
+    \endlastfoot
+}
+{
+    %end-code
+    \endxltabular
+    \renewcommand{\arraystretch}{1}
+}

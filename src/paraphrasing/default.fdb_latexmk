@@ -1,0 +1,13 @@
+# Fdb version 3
+["pdflatex"] 1640867983 "default.tex" "default.pdf" "default" 1640867984
+  "c:/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map" 1605626049 3524 cb3e574dea2d1052e39280babc910dc8 ""
+  "c:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1605624739 1328 c834bbb027764024c09d3d2bf908b5f0 ""
+  "c:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1605624739 1316 b636689f1933f24d1294acdf6041daaa ""
+  "c:/texlive/2020/texmf-dist/web2c/texmf.cnf" 1605626832 39451 15a3ebee027466ecb89701aa91dfebaf ""
+  "c:/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1605632179 2549568 7d74cdd04d2826ec8d7fb8823478b1ba ""
+  "c:/texlive/2020/texmf.cnf" 1605631971 713 e69b156964470283e0530f5060668171 ""
+  "default.aux" 1640867831 9 a94a2480d3289e625eea47cd1b285758 ""
+  "default.tex" 1640864686 3362 6b013c0e083691146e153165653b1258 ""
+  (generated)
+  "default.log"
+  "default.pdf"

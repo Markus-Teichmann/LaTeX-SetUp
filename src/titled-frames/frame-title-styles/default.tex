@@ -1,0 +1,18 @@
+\renewcommand{\setFrameTitle}[1]{%
+    \IfEndWith{\thesubsection}{0}
+    {
+        \renewcommand{\getFrameTitle}{
+            #1 \thesection.\arabic{#1}  \frameTitle  %#1 ist der aus titled-framed-environment übergebene Name der Umgebung. z.B. Aufgabe
+        }
+        %\label{#1:\thesection.\arabic{#1}}  %#1 ist der aus titled-framed-environment übergebene Name der Umgebung. z.B. Aufgabe
+    }
+    %else:
+    {
+        \renewcommand{\getFrameTitle}{
+            #1 \thesubsection.\arabic{#1}  \frameTitle  %#1 ist der aus titled-framed-environment übergebene Name der Umgebung. z.B. Aufgabe
+        }
+        %\label{#1:\thesubsection.\arabic{#1}}  %#1 ist der aus titled-framed-environment übergebene Name der Umgebung. z.B. Aufgabe
+    }
+}
+% #1 ist der Titel der Umgebung also sowas wie:Aufgabe, Definition oder ähliches.
+% Gleichzeitig fungiert #1 auch als Zähler für die in dieser Sektion vorkommenden Aufgaben, Definitionen oder ähnlichem.

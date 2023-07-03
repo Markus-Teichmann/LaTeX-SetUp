@@ -1,0 +1,12 @@
+\renewcommand{\setEnvironmentStyle}[1]{%
+    \newmdenv[%
+    %    roundcorner=5pt
+        subtitlebelowline=true,
+    %    subtitleaboveline=true,
+    %    subtitlebackgroundcolor=black!20!white,
+        backgroundcolor=white,
+        frametitle={\getFrameTitle},
+        frametitlerule=true,
+        frametitlebackgroundcolor=black!20!white,
+    ]{#1}
+}

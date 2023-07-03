@@ -1,0 +1,19 @@
+%\usepackage{import}
+%\usepackage{xifthen}
+%\usepackage{pdfpages}
+%\usepackage{transparent}
+
+\newcommand{\setImagePath}[1]{%
+    \graphicspath{ {./#1/} }
+    \newcommand{\imagePath}{#1} % Hier wird newcommand zum deklarieren einer Variable "missbraucht"
+}
+
+\newcommand{\includesvg}[2]{%
+    \def\svgwidth{#1}
+    \import{./\imagePath/svg/}{#2.pdf_tex}
+}
+%ToDo neuer Befehl für includegraphics
+\newcommand{\includeScaledsvg}[2]{%
+    \def\svgscale{#1}
+    \import{./\imagePath/svg/}{#2.pdf_tex}
+}
