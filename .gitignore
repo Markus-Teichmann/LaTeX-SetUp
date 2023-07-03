@@ -1,0 +1,17 @@
+#Ignoriere alle .aux Dateien
+*.aux
+#Ignoriere alle .bcf Dateien
+*.bcf
+#Ignoriere alle .log Dateien
+*.log
+#Ignoriere alle .out Dateien
+*.out
+#Ignoriere alle .pdf Dateien
+*.pdf
+#Ignoriere alle .run.xml Dateien
+*.run.xml
+#Ignoriere alle .synctex.gz Dateien
+*.synctex.gz
+#Ignoriere main.tex
+main.tex
+
