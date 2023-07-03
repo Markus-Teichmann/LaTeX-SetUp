@@ -14,4 +14,7 @@
 *.synctex.gz
 #Ignoriere main.tex
 main.tex
-
+#Ignoriere das Deckblatt
+main/titlepage.tex
+#Ignoriere den Anhang
+main/anhang.tex
