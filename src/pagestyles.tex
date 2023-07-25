@@ -4,6 +4,7 @@
     \newcommand{\defaultHeaderRuleWidth}{0pt}
     \newcommand{\sectionName}{}
     \newcommand{\subSectionName}{}
+    \newcommand{\currentPagestyle}{}
 }
 \newcommand{\setPagestyle}[1]{%
     \input{./\pagestylePath/#1}
@@ -11,6 +12,7 @@
     \AtBeginShipout { %Sollte den folgenden Code auf jeder Seite ausführen und damit den Pagestyle Bug beheben(27.05.22)
         \thispagestyle{#1}
     }
+    \renewcommand{\currentPagestyle}{#1}
 }
 %\setThisPagestyle ist aktuell nicht verwendbar, da AtBeginShipout immer wieder den Pagestyle überschreibt.
 % Das ist zwar ein Problem aber eigentlich nur beim Anhang. Dazu haben wir schon eine Lösung gefunden.
@@ -18,6 +20,7 @@
 \newcommand{\setThisPagestyle}[1]{%
     \input{./\pagestylePath/#1}
     \thispagestyle{#1}
+    \renewcommand{\currentPagestyle}{#1}
 }
 \newcommand{\setDefaultHeaderRuleWidth}[1]{%
     \renewcommand{\defaultHeaderRuleWidth}{#1}
