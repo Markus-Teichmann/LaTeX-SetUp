@@ -1,0 +1,31 @@
+\newcounter{tabs}
+\setcounter{tabs}{0}
+\newcounter{rows}
+\setcounter{rows}{0}
+\AtBeginEnvironment{xltabular}{
+    \stepcounter{tabs}
+    \setcounter{rows}{0}
+}
+% Besser nicht verwenden, Konflikt mit hypertarget und hyperlink
+%\newcommand{\theTable}{
+%    \arabic{tabs}
+%}
+%\newcommand{\theRow}{
+%    \arabic{rows}
+%}
+\newcolumntype{\label}[1]{#1<{%
+    \raisebox{1.5em}{\hypertarget{\arabic{tabs}:\arabic{rows}}{}}
+    \phantomsection
+    \stepcounter{rows}
+}}
+\newcommand{\reftab}[2]{%
+    \hyperlink{#2}{#1}
+}
+\newcommand{\refctab}[2]{%
+    \hyperlink{\arabic{tabs}:#2}{#1}
+}
+
+% Folgendes ist nur als Hilfestellung gedacht.
+\newcolumntype{\numbered}[1]{>{%
+    \arabic{rows} 
+}#1}

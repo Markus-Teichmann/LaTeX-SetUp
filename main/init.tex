@@ -8,6 +8,7 @@
 \input{src/listings}
 %\input{src/proCon(alpha)}
 \input{src/multicol.tex}
+\input{src/crossreferencing.tex}
 
 \setImagePath{lib/img}
 \setPagestylePath{src/pagestyles}
@@ -23,9 +24,9 @@
 
 \AfterEndPreamble{
     \input{main/titlepage} \label{in:titlepage}      % Natürlich nur, wenn man eine Titlepage.
-    %\setThisPagestyle{toc}                      % Natürlich nur, wenn toc etwünscht.
-    %\tableofcontents{}                            % Natürlich nur, wenn toc etwünscht.
-    %\newpage                                    % Notwendig.
+    \setThisPagestyle{toc}                      % Natürlich nur, wenn toc etwünscht.
+    \tableofcontents{}                            % Natürlich nur, wenn toc etwünscht.
+    \newpage                                    % Notwendig.
 
     %Letzte Einstellungen, welche dann für das gesamte Dokument gelten sollen.
     %\setEnvironment{Quellcode}{gray-white}     % Alle möglichen Kästen die wir mit den Stilen bauen können.
