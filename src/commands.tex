@@ -1,3 +1,4 @@
+% Folgende Befehle machen Probleme:
 %\newcommand{\enlargePage}[1]{
 %    \newgeometry{top=4.5cm - #1/2, bottom=4.5cm - #1/2}
 %}
@@ -5,8 +6,9 @@
 %    \clearpage
 %    \restoregeometry
 %}
+% mark wird wohl in zwischen von einem anderen Packet verwendet
+%\renewcommand{\mark}[1]{\glqq #1\grqq{}}
 
-\renewcommand{\mark}[1]{\glqq #1\grqq{}}
 \renewcommand{\quote}[3]{%
     \mark{#1}
     \hspace{-1ex}

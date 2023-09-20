@@ -29,14 +29,13 @@
     \newpage                                    % Notwendig.
 
     %Letzte Einstellungen, welche dann für das gesamte Dokument gelten sollen.
-    %\setEnvironment{Quellcode}{gray-white}     % Alle möglichen Kästen die wir mit den Stilen bauen können.
-    %\setCodestyle{default}                     % Stil des Quellcodes, falls wir welchen verwenden.
-    %\setPagestyle{default}                     % Header und Footer - Global ~ Noch sehr verbuggt.
+    \setEnvironment{Quellcode}{gray-white}     % Alle möglichen Kästen die wir mit den Stilen bauen können.
+    \setCodestyle{default}                     % Stil des Quellcodes, falls wir welchen verwenden.
     \setParaphrasing{default}          % Hier geht es um die Überschriften etc.
     %\setThisPagestyle{Aufgabenblatt}           % Header und Footer - Lokal
-    \setPagestyle{numbered}                      % Header und Footer - global
+    \setPagestyle{default}                      % Header und Footer - global
     %\captionsetup[figure]{labelformat=empty}   % Falls nötig, so lässt sich damit die Beschriftung von Abbildungen umgehen
-    \setEnvironment[default]{Aufgabe}{light-blue}  % Neue Umgebung.
+    \setEnvironment[default]{Aufgabe}{light-gray}  % Neue Umgebung.
     \setEnvironment[default]{Tipp}{light-gray}
 
     \usetikzlibrary{calc}
