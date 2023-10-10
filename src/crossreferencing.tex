@@ -29,3 +29,12 @@
 \newcolumntype{\numbered}[1]{>{%
     \arabic{rows} 
 }#1}
+
+% Um auch zwischen Section's und SubSection's zu referenzieren habe
+% ich in pagestyles.tex ein \label mit der
+% Section/Subectionnumber angegeben. Hier definiere ich nur den
+% \refsec Befehl.
+\newcommand{\refsec}[2]{%
+    \hyperref[#2]{#1}
+}
+

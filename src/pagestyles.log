@@ -1,24 +1,21 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.17)  31 DEC 2021 12:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/nixos.org) (preloaded format=pdflatex 1980.1.1)  22 SEP 2023 15:48
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **pagestyles.tex
 (./pagestyles.tex
-LaTeX2e <2020-10-01> patch level 2
-L3 programming layer <2020-10-27> xparse <2020-03-03>)
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-02-22>)
 ! Emergency stop.
 <*> pagestyles.tex
-                  
-*** (job aborted, no legal \end found)
-
- 
+                   
 Here is how much of TeX's memory you used:
- 30 strings out of 479485
- 617 string characters out of 5875915
- 265526 words of memory out of 5000000
- 17141 multiletter control sequences out of 15000+600000
- 535088 words of font info for 29 fonts, out of 8000000 for 9000
+ 41 strings out of 476024
+ 800 string characters out of 5764067
+ 1849388 words of memory out of 5000000
+ 20591 multiletter control sequences out of 15000+600000
+ 512287 words of font info for 32 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 13i,0n,15p,142b,10s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 13i,0n,12p,142b,10s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
 !  ==> Fatal error occurred, no output PDF file produced!

@@ -30,6 +30,7 @@
 }
 \newcommand{\newSection}[1]{%
     \section{#1}
+    \label{\thesection}
     \resetTitledFrameEnvironmentCounters
     \renewcommand{\sectionName}{#1}
     %Ergibt natürlich nur dann Sinn, wenn wir auch die Titled-Framed-Environments verwenden.
@@ -41,6 +42,7 @@
 }
 \newcommand{\newSubSection}[1]{%
     \subsection{#1}
+    \label{\thesubsection}
     \resetTitledFrameEnvironmentCounters
     \renewcommand{\subSectionName}{#1}
     %Ergibt natürlich nur dann Sinn, wenn wir auch die Titled-Framed-Environments verwenden.
@@ -49,4 +51,8 @@
     \subsection*{#1}
     \resetTitledFrameEnvironmentCounters
     \renewcommand{\subSectionName}{#1}
+}
+\newcommand{\newSubSubSection}[1]{%
+    \subsubsection{#1}
+    \label{\thesubsubsection}
 }
