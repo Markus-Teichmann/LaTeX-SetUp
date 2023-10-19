@@ -11,6 +11,7 @@
 *.fls
 *.fls_latexmk
 *.fdb_latexmk
+*.zip
 main/*.aux
 main/*.bbl
 main/*.bcf
