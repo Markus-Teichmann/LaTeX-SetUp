@@ -1,6 +1,6 @@
-\renewcommand{\setFrameTitle}[1]{%
+\renewcommand{\setFrameTitle}[2]{%
     \addtocounter{#1}{-1} %Da wir ungeladbelt bleiben wollen müssen wir vom Counter ja wieder eins abziehen. Der Counter trägt den selben Namen wie die Umgebung.
     \renewcommand{\getFrameTitle}{
-        \hspace{-1.5ex} #1:  \frameTitle %#1 ist der aus titled-framed-environment übergebene Name der Umgebung. z.B. Aufgabe
+        \hspace{-1.5ex} #1:  #2
     }
 }

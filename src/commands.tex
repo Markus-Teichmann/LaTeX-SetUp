@@ -10,7 +10,7 @@
 %\renewcommand{\mark}[1]{\glqq #1\grqq{}}
 
 \renewcommand{\quote}[3]{%
-    \mark{#1}
+    \glqq #1\grqq{}
     \hspace{-1ex}
     \footnotemark
     \footnotetext{%
@@ -36,6 +36,8 @@
     \addcontentsline{toc}{section}{\protect\numberline{\thesection}{Anhang}}
     \renewcommand{\subSectionName}{}
     \renewcommand{\sectionName}{Anhang}
+    \phantomsection
+    \hypertarget{Anhang}
     \input{main/anhang}
 }
 \newcommand{\lit}{

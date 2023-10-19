@@ -1,9 +1,0 @@
-PWD C:/Users/Markus Teichmann/Documents/Klagenfurt/OneDrive - Alpen-Adria Universität Klagenfurt/3.Semester/Computermathematik/LaTeX-Hausarbeit/src/paraphrasing
-INPUT c:/texlive/2020/texmf.cnf
-INPUT c:/texlive/2020/texmf-dist/web2c/texmf.cnf
-INPUT c:/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT default.tex
-OUTPUT default.log
-INPUT c:/texlive/2020/texmf-dist/fonts/map/fontname/texfonts.map
-INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
-INPUT c:/texlive/2020/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm

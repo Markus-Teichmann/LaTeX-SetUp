@@ -1,43 +1,47 @@
-%\usepackage{tikz}
-%\usepackage[framemethod=tikz, xcolor]{mdframed}
-%\usepackage{etoolbox}
-%\usepackage{color}
-%\usepackage{xstring}
-
 \newcommand{\setTitledFramePath}[1]{%
     \newcommand{\titledFramePath}{#1}
-    \newcommand{\getFrameTitleStyle}{}
-    \newcommand{\getFrameTitle}{}
-    \newcommand{\frameTitle}{}
-    \newcommand{\frameStyle}{}
+    \newcommand{\setFrameLabelStyle}{}
+    \newcommand{\setFrameTitle}{} %definiert getFrameTitle
+    \newcommand{\getFrameTitle}{} %in frame-title-styles definiert.
     \newcommand{\counterList}{}
-    \newcommand{\setFrameTitle}{}
-    \newcommand{\setEnvironmentStyle}
-    %\patchcmd{\begin}{\begingroup}{\begingroup\let\@surroundenvir\@currenvir}{}{}
+    \newcommand{\setEnvironmentStyle}{}
 }
 
-% Ich denke wir sollten deutlich weniger Variablen definieren und einfach auf #1 etc vertrauen ^^.
 \newcommand{\setEnvironment}[3][default]{%
-    %Wie wir gesehen haben macht es einen großen Unterschied ob wir neue Variablen deklarieren oder ob wir auf die vorgegebenen Werte vertrauen. Denn die Variablen können überschrieben werden. Damti das dennoch halbwegs lesbar ist haben wir überall hinter die Zeilen erklärungen geschrieben.
-    %!Wichtig! um die Nötigen Daten ohne deklaration von Variablen weiterzugeben müssen alle frame-title-styles den Befehl \setFrameTitle neu definieren!
-    %!Ebenso Wichtig! um die Nötigen Daten ohne deklaration von Variablen weiterzugeben müssen alle titled-frames den Befehl \setEnvironmentStyle ne definieren!
-    \newcounter{#2} %#2 ist der Name der Umgebung z.B. Aufgabe
-    \listadd{\counterList}{#2} %#2 ist der Name der Umgebung z.B. Aufgabe
-    \newenvironment{#2}[2][#1] %#2 ist der Name der Umgebung und bekommt hier zwei neue Optionale Variablen deswegen stehen die hier auch in eckigen Klammern [] diese sind geschachtelt und daher kann auf sie nur mit ##1 bzw. ##2 zugegriffen werden. Mit [#1] wird erreicht, dass die erste Variable ##1 sollte sie nicht angeben werden den Wert der in #1 liegt erhält. Der Wert der in #1 liegt ist sollte er bei erstellung der Umgebung nicht angeben werden default (VGL Z.20) ##1 und ##2 werden erst beim begin der Umgebung mitgegeben. Z.B.: \begin{Aufgabe}[default]{das ist ein Titel} ... \end{Aufgabe} Der erste Wert wäre hier "default" und der zweite: "das ist ein Titel"
+%
+    %#1 ist der Stil des Titels (hauptsächlich wirks sich das auf die
+    %Nummerierung aus. Ist aber ein optionaler Parameter und wird,
+    %wenn nicht angegeben auf default gesetzt.)
+    %
+    %#2 ist der Name der Umgebung z.b. Definition oder Satz.
+    %#3 ist der Stil der Umgebung, also z.B. light-blue oder
+    %gray-white.
+%
+    \newcounter{#2}
+    \listadd{\counterList}{#2}
+    \input{./\titledFramePath/frame-title-label-styles/#1}
+    \setFrameLabelStyle{#2}
+    \newenvironment{#2}[2][#1] 
+    %
+        %##1 beschreibt den Stil des Titels (hauptsächlich wirkt sich
+        %das auf die Nummerierung aus.) Es ist ein optionaler
+        %Parameter und solte er nicht angegeben werden, so wird er auf
+        %#1 gesetzt. #1 beschreibt genau das selbe, wird nur früher
+        %schon gesetzt. (in init.tex)
+        %
+        %##2 ist der Inhalt des Titels.
+    %
     {
         %begin-code
-        \renewcommand{\frameStyle}{##1} %##1 ist der Stil des Titels z.B. unlabeled.
-        \renewcommand{\frameTitle}{##2} %##2 ist der Titel der erst beim Begin vergeben wird.
-        \refstepcounter{#2} %#2 ist der Name der Umgebung z.B. Aufgabe
-        \input{./\titledFramePath/frame-title-styles/\frameStyle}
-        \setFrameTitle{#2} %#2 ist der Name der Umgebung z.B. Aufgabe
-        \input{./\titledFramePath/#3} %#3 ist der Stil der Umgebung z.B. gray-white.
-        \setEnvironmentStyle{#3} %#3 ist der Stil der Umgebung z.B. gray-white.
-        \begin{#3} %#3 ist der Stil der Umgebung z.B. gray-white.
+        \input{./\titledFramePath/frame-title-styles/##1}
+        \setFrameTitle{#2}{##2}
+        \input{./\titledFramePath/#3}
+        \setEnvironmentStyle{#3}
+        \begin{#3}
     }
     {
         %end-code
-        \end{#3} %#3 ist der Stil der Umgebung z.B. gray-white.
+        \end{#3}
     }
 }
 \newcommand{\resetTitledFrameEnvironmentCounters}{%
@@ -46,15 +50,3 @@
     }
     \dolistloop{\counterList}
 }
-
-
-%\newenvironment{<env-name>}[<n-args>][<default>]{<begin-code>}{<end-code>}
-%<env-name>     % Name der neuen Umgebung
-%<n-args>       % Anzahl der Argumente
-%<default>      % Der default-Wert des ersten Arguments
-%<begin-code>   % Code den Latex am Anfang der Umgebung ausführt
-%<end-code>     % Code den Latex am Ende der Umgebung ausführt
-
-%Ergänzung:
-%Hier könnten wir auch \renewenvironment verwenden, dann ließe sich der Stil des Kastens
-%evtl noch besser ändern.

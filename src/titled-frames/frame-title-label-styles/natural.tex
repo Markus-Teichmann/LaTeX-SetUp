@@ -1,0 +1,8 @@
+\renewcommand{\setFrameLabelStyle}[1]{%
+    %#1 ist der Name der Umgebung z.b. Definition oder Satz.
+    \BeforeBeginEnvironment{#1}{%
+    \refstepcounter{#1}
+    \phantomsection
+    \hypertarget{#1:\arabic{#1}}
+    }
+}
