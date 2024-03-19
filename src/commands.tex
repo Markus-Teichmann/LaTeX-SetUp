@@ -61,14 +61,10 @@
 \newcommand{\newQuote}[3]{\glqq #1\grqq{}\footcite[#3]{#2}}
 \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor{}}
 
+\censorruledepth = -.2ex
+\censorruleheight = .1ex
 \newcommand{\luecke}[1]{
-    %\hspace{0,1cm}
-    \underline{
-        %\hspace{0,25cm}
-        \hphantom{#1}
-        %\hspace{0,25cm}
-    }
-    \hspace{0.5ex}
+    \xblackout{\LARGE #1}
 }
 
 %Hier ergänze ich noch eine Varriante, wie ein Zitat zu Beginn eines Kapitels aussehen könnte.
