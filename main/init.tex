@@ -9,6 +9,7 @@
 %\input{src/proCon(alpha)}
 \input{src/multicol.tex}
 \input{src/crossreferencing.tex}
+\input{src/columntypes.tex}
 
 \setImagePath{lib/img}
 \setPagestylePath{src/pagestyles}
@@ -33,10 +34,10 @@
     %\setCodestyle{default}                     % Stil des Quellcodes, falls wir welchen verwenden.
     \setParaphrasing{default}          % Hier geht es um die Überschriften etc.
     %\setThisPagestyle{Aufgabenblatt}           % Header und Footer - Lokal
-    \setPagestyle{default}                      % Header und Footer - global
+    \setPagestyle{named}                      % Header und Footer - global
     %\captionsetup[figure]{labelformat=empty}   % Falls nötig, so lässt sich damit die Beschriftung von Abbildungen umgehen
-    \setEnvironment[default]{Satz}{light-blue}  % Neue Umgebung.
-    \setEnvironment[default]{Definition}{light-gray}
+    \setEnvironment[default]{Definition}{light-blue}  % Neue Umgebung.
+    \setEnvironment[default]{Aufgabe}{light-gray}
 
     \usetikzlibrary{calc}
     \usetikzlibrary{intersections}
