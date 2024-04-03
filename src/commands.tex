@@ -8,7 +8,7 @@
 %}
 % mark wird wohl in zwischen von einem anderen Packet verwendet
 %\renewcommand{\mark}[1]{\glqq #1\grqq{}}
-
+\newcommand{\tikzmark}[1]{\tikz[baseline, remember picture] \coordinate (#1) {};}
 \renewcommand{\quote}[3]{%
     \glqq #1\grqq{}
     \hspace{-1ex}
