@@ -14,8 +14,8 @@
     \newcommand{\libraryPath}{#1}
 }
 
-\newcommand{\addlibresource}[1]{%
-    \addbibresource{./\libraryPath/#1.bib}
+\newcommand{\addlibresource}{%
+    \addbibresource[glob=true]{./\libraryPath/bibfiles/*.bib}
 }
 
 %Wichtig!
