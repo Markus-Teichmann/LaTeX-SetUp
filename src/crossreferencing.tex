@@ -51,7 +51,12 @@
 \newcommand{\refsec}[2]{%
     \hyperref[#2]{#1}
 }
+
+% Der Befehl \refenv verlinkt auf die angegebene Umgebung z.B. eine
+% Definition: 
+% \refenv{Definition}{1.2}
+% Dabei ist es wichtig, dem gewählten frame Title Style
+% nach zu referenzieren!
 \newcommand{\refenv}[2]{%
     \hyperlink{#1:#2}{#1 #2}
 }
-% Ich denke dir wird so benutzt: \refenv{Definition}{1.2}
