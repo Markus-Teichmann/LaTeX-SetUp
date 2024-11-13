@@ -49,8 +49,9 @@
     \setcounter{subsubsection}{0}
     \addcontentsline{toc}{section}{\protect\numberline{\thesection}{Literatur}}
     \renewcommand{\subSectionName}{}
-    \renewcommand{\sectionName}{Literatur}
-    \printbibliography
+    %\renewcommand{\sectionName}{Literatur}
+    \newSection{Literatur}
+    \printbibliography[heading=none]
 }
 \newcommand{\checkedSquare}{\mbox{\ooalign{$\checkmark$\cr\hidewidth$\square$\hidewidth\cr}}}
 \newcommand{\R}{\ensuremath{\mathbb{R}}}
