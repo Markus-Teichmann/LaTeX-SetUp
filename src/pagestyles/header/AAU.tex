@@ -1,0 +1,39 @@
+\definecolor{aauDarkerBlue}{RGB}{4,62,80}
+\definecolor{aauBlue}{RGB}{44,98,118}
+%Braucht das Packet fancyhdr.
+%Braucht das Packet xString.
+\lhead{
+    \pbox{0.35\textwidth}{
+        \color{aauBlue} \slshape Kapitel \thesection. \sectionName
+    }
+}
+\chead{%
+    \pbox{0.3\textwidth}{
+        \centering
+        \color{aauBlue} Markus Teichmann 
+    }
+}
+\rhead{%
+    \ifnum\value{subsection} > 0 {
+        \pbox{0.35\textwidth}{
+            \color{aauBlue} \slshape \thesubsection. \subSectionName
+        }
+    }
+    \fi
+}
+\renewcommand{\headrule}{\vspace{-2mm} \hspace{1mm} \color{aauDarkerBlue} \hrule height \defaultHeaderRuleWidth}
+%\renewcommand{\headrulewidth}{\defaultHeaderRuleWidth}
+%\setlength{\headheight}{10cm}
+\setlength{\headsep}{4mm} %Hier sollte eigentlich die Höhe 
+%der pbox stehen bin aber jetzt nicht dazu gekommen die zu
+%ermitteln. Sie ist jedoch sicher nicht immer gleich 1cm
+
+%\thepage           %Nummer der aktuellen Seite
+%\leftmark          %Aktueller Kapitelname
+%\rightmark         %Aktueller Unterkapitelname
+%\chaptername       %Das Wort:"Kapitel"
+%\thechapter        %Aktuelle Kapitelnummerrierung
+%\thesection        %Aktuelle Teilnummerierung
+%\sectionName       %Haben wir in pagestyles.tex definiert.
+%\subSectionName    %Haben wir in pagestyles.tex definiert.
+%\thesubsection     %Aktuelle Nummerrierung der Subsection.
