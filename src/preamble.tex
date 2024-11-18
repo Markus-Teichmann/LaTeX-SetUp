@@ -3,18 +3,20 @@
 %Achtung die Werte für top und bottom werden in commands auch verwendet.
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
-\usepackage[T1]{fontenc}
+%\usepackage[default]{comfortaa}
 \usepackage[sfdefault,scaled=.85]{FiraSans}
+\usepackage[T1]{fontenc}
 \usepackage{newtxsf}
 \usepackage{graphicx}
 %\usepackage{hyperref}
 \usepackage{longtable}  %Für die Longtable-Umgebung
 \usepackage{caption}
-\usepackage{listings}
+%\usepackage{listings}
 \usepackage[section]{placeins} %Für FloatBarrier um floates an stellen festzunageln
 \usepackage{atbegshi} % Behbt den Pagestyle bug
 \usepackage[x11names]{xcolor}
-\usepackage{soulutf8} %Ermöglicht uns die Farbe und dicke der (unterstreichungsline) zu verändern. Verwendet in paraphrasing/underline.tex
+%\usepackage{soulutf8} %Ermöglicht uns die Farbe und dicke der (unterstreichungsline) zu verändern. Verwendet in paraphrasing/underline.tex
+\usepackage{soul}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{mathrsfs}
@@ -40,10 +42,12 @@
 \usepackage{color}
 \usepackage{xstring}
 \usepackage[hyperfootnotes=false]{hyperref}
-\usepackage{xltabular}
 \usepackage{multirow}
 %\usepackage{plantuml}
 \usepackage{pbox}
 \usepackage{censor}
 \usepackage{changepage}
 \usepackage{calc}
+\usepackage{tabularray}
+\UseTblrLibrary{functional}
+%\usepackage{minted}

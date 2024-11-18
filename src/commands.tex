@@ -9,22 +9,6 @@
 % mark wird wohl in zwischen von einem anderen Packet verwendet
 %\renewcommand{\mark}[1]{\glqq #1\grqq{}}
 \newcommand{\tikzmark}[1]{\tikz[baseline, remember picture] \coordinate (#1) {};}
-\renewcommand{\quote}[3]{%
-    \glqq #1\grqq{}
-    \hspace{-1ex}
-    \footnotemark
-    \hspace{-1ex}
-    \footnotetext{%
-        \citeauthor{#2}: #3 \cite{#2} \citeurl{#2}
-    }
-}
-\newcommand{\source}[2]{%
-    \footnotemark
-    \hspace{-1ex}
-    \footnotetext{%
-        \citeauthor{#1}: #2 \cite{#1} \citeurl{#1}
-    }
-}
 %\newcommand{\bold}[1]{\textbf{#1}}
 
 %Um das richtige Datumsformat zu haben
@@ -44,10 +28,10 @@
 }
 \newcommand{\lit}{
     \newpage
-    \refstepcounter{section}%
+    %\refstepcounter{section}%
     \setcounter{subsection}{0}
     \setcounter{subsubsection}{0}
-    \addcontentsline{toc}{section}{\protect\numberline{\thesection}{Literatur}}
+    %\addcontentsline{toc}{section}{\protect\numberline{\thesection}{Literatur}}
     \renewcommand{\subSectionName}{}
     %\renewcommand{\sectionName}{Literatur}
     \newSection{Literatur}

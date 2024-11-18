@@ -1,49 +1,3 @@
-\newcounter{tabs}
-\setcounter{tabs}{0}
-\newcounter{rows}
-\setcounter{rows}{0}
-\AtBeginEnvironment{xltabular}{
-    \stepcounter{tabs}
-    \setcounter{rows}{0}
-}
-% Besser nicht verwenden, Konflikt mit hypertarget und hyperlink
-%\newcommand{\theTable}{
-%    \arabic{tabs}
-%}
-%\newcommand{\theRow}{
-%    \arabic{rows}
-%}
-\newcolumntype{\label}[1]{#1<{%
-    \raisebox{1.5em}{\hypertarget{\arabic{tabs}:\arabic{rows}}{}}
-    \phantomsection
-    \stepcounter{rows}
-}}
-
-\newcolumntype{\blabel}[1]{%
-    >{%
-        \bfseries
-    }#1<{%
-        \raisebox{1.5em}{\hypertarget{\arabic{tabs}:\arabic{rows}}{}}
-        \phantomsection
-        \stepcounter{rows}
-    }
-}
-
-\newcommand{\reftab}[2]{%
-    \hyperlink{#2}{#1}
-}
-\newcommand{\refctab}[2]{%
-    \hyperlink{\arabic{tabs}:#2}{#1}
-}
-
-% Folgendes ist nur als Hilfestellung gedacht.
-\newcolumntype{\numbered}[1]{>{%
-    \arabic{rows} 
-}#1}
-
-% Ein zentrierter aber bestimmt langer Typ.
-\newcolumntype{C}[1]{>{\centering}p{#1}}
-
 % Um auch zwischen Section's und SubSection's zu referenzieren habe
 % ich in pagestyles.tex ein \label mit der
 % Section/Subectionnumber angegeben. Hier definiere ich nur den
@@ -59,4 +13,20 @@
 % nach zu referenzieren!
 \newcommand{\refenv}[2]{%
     \hyperlink{#1:#2}{#1 #2}
+}
+\renewcommand{\quote}[3]{%
+    \glqq #1\grqq{}
+    \hspace{-1ex}
+    \footnotemark
+    \hspace{-1ex}
+    \footnotetext{%
+        \citeauthor{#2}: #3 \cite{#2} \citeurl{#2}
+    }
+}
+\newcommand{\source}[2]{%
+    \footnotemark
+    \hspace{-1ex}
+    \footnotetext{%
+        \citeauthor{#1}: #2 \cite{#1} \citeurl{#1}
+    }
 }

@@ -29,6 +29,8 @@
     \renewcommand{\defaultFooterRuleWidth}{#1}
 }
 \newcommand{\newSection}[1]{%
+    \setcounter{tbl}{0} %Für die Tabellen, damit die Nummerierung
+    %nach den Sections auch stimmt.
     \section{#1}
     \label{\thesection}
     \resetTitledFrameEnvironmentCounters
