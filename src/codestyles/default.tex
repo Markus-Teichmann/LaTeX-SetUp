@@ -1,11 +1,53 @@
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{intelliJBlau}{RGB}{14,54,170}
+\definecolor{intelliJAnnotations}{RGB}{158,143,23}
+\definecolor{intelliJStrings}{RGB}{13,130,19}
+\definecolor{intelliJBackground}{RGB}{255,255,255}
+\definecolor{intelliJVariables}{RGB}{129,6,138}
+\definecolor{intelliJMethodNames}{RGB}{0,109,147}
+%\definecolor{intelliJComments}{RGB}{}
+
 \lstdefinestyle{default}{
-    %belowcaptionskip=1\baselineskip,
-    breaklines=true,
-    frame=none,
-    numbers=none, %left
-    basicstyle=\footnotesize\ttfamily,
-    %keywordstyle=\bfseries\color{green!40!black},
-    %commentstyle=\itshape\color{purple!40!black},
-    %identifierstyle=\color{blue},
-    %backgroundcolor=\color{gray!10!white},
+    language=Java,
+    backgroundcolor=\color{intelliJBackground},   
+    commentstyle=\color{codegray},
+    keywordstyle=\color{intelliJBlau},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{intelliJStrings},
+    %basicstyle=\ttfamily\footnotesize,
+    %basicstyle=\ttfamily,
+    %basicstyle=\footnotesize,
+    basicstyle=\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    moredelim = [l][\color{intelliJAnnotations}]{@},
+    moredelim = [is][\color{intelliJMethodNames}]{\\(}{\\)},
+    moredelim = [is][\color{intelliJVariables}]{\\<}{\\>}
+}
+%Wie wir sehen fehlen hier noch für Methodennamen und Variablen noch
+%die passenden Farben, die können wir noch mit passenden Delimitern
+%festlegen. Zum Beispiel mit:
+% moredelim = [is][\color{intelliJMethodNames}]{\\(}{\\)}
+% moredelim = [is][\color{intelliJVariables}]{\\<}{\\>}
+%Das wird beim einlesen von Dokumenten aber echt schwer...
+
+\setEnvironment[default]{Code}{gray-white}
+
+\newcommand{\includeJava}[3][]{%
+    \begin{Code}{#2}
+        \vspace{-1em}
+        \hspace{0.01\textwidth}
+        \begin{minipage}[h]{0.99\textwidth}
+            \lstinputlisting[#1]{#3/#2.java}
+        \end{minipage}
+        \vspace{-1em}
+    \end{Code}
 }

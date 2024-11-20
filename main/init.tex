@@ -9,7 +9,7 @@
 %\input{src/proCon(alpha)}
 \input{src/multicol.tex}
 \input{src/crossreferencing.tex}
-\input{src/columntypes.tex}
+\input{src/tabularray.tex}
 
 \setImagePath{lib/img}
 \setPagestylePath{src/pagestyles}
@@ -31,13 +31,13 @@
 
     %Letzte Einstellungen, welche dann für das gesamte Dokument gelten sollen.
     %\setEnvironment{Sagemath}{gray-white}     % Alle möglichen Kästen die wir mit den Stilen bauen können.
-    %\setCodestyle{default}                     % Stil des Quellcodes, falls wir welchen verwenden.
+    \setCodestyle{default}                     % Stil des Quellcodes, falls wir welchen verwenden.
     \setParaphrasing{AAU}          % Hier geht es um die Überschriften etc.
     %\setThisPagestyle{Aufgabenblatt}           % Header und Footer - Lokal
     \setPagestyle{AAU}                      % Header und Footer - global
     %\captionsetup[figure]{labelformat=empty}   % Falls nötig, so lässt sich damit die Beschriftung von Abbildungen umgehen
-    \setEnvironment[default]{Beispiel}{light-lila}  % Neue Umgebung.
-    \setEnvironment[default]{Aufgabe}{light-gray}
+    %\setEnvironment[default]{Beispiel}{light-blue}  % Neue Umgebung.
+    %\setEnvironment[default]{Aufgabe}{light-gray}
 
     \usetikzlibrary{calc}
     \usetikzlibrary{intersections}

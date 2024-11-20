@@ -1,12 +1,27 @@
 \renewcommand{\setEnvironmentStyle}[1]{%
     \newmdenv[%
-    %    roundcorner=5pt
-        subtitlebelowline=true,
-    %    subtitleaboveline=true,
-    %    subtitlebackgroundcolor=black!20!white,
-        backgroundcolor=white,
+    %General-Settings:
         frametitle={\getFrameTitle},
+        %roundcorner=10pt,
+        subtitlebelowline=true,
+        %subtitleaboveline=true,
+        %subtitlebackgroundcolor=black!20!white,
+    %
+    %Title-Section-Settings:
         frametitlerule=true,
+        %frametitlerulecolor=frametitlerulecolor,
+        frametitlerulewidth=1pt,
         frametitlebackgroundcolor=black!20!white,
-    ]{#1}
+    %
+    %Body-Section-Settings:
+        backgroundcolor=white,
+        linecolor=black!30!white,
+        linewidth=1pt,
+        %innerlinecolor=innerlinecolor,
+        %middellinecolor=middellinecolor,
+        %outerlinecolor=outerlinecolor,
+        %innerlinewidth=,
+        %middellinewidth=,
+        %outerlinewidth=,
+    ]{#1} %#1 ist der aus titled-framed-environment übergebene Style der Umgebung. z.B. light-blue
 }

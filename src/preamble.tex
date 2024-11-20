@@ -3,15 +3,15 @@
 %Achtung die Werte für top und bottom werden in commands auch verwendet.
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
-%\usepackage[default]{comfortaa}
-\usepackage[sfdefault,scaled=.85]{FiraSans}
 \usepackage[T1]{fontenc}
+%Fonts:
+    %\usepackage[default]{comfortaa}
+    \usepackage[sfdefault,scaled=.85]{FiraSans}
 \usepackage{newtxsf}
 \usepackage{graphicx}
 %\usepackage{hyperref}
-\usepackage{longtable}  %Für die Longtable-Umgebung
+\usepackage{longtable}  %Für die Longtable-Umgebung tabularray baut darauf auf
 \usepackage{caption}
-%\usepackage{listings}
 \usepackage[section]{placeins} %Für FloatBarrier um floates an stellen festzunageln
 \usepackage{atbegshi} % Behbt den Pagestyle bug
 \usepackage[x11names]{xcolor}
@@ -48,6 +48,5 @@
 \usepackage{censor}
 \usepackage{changepage}
 \usepackage{calc}
-\usepackage{tabularray}
-\UseTblrLibrary{functional}
-%\usepackage{minted}
+\usepackage{tabularray} % Für die Tabellenumgebung (tblr)
+\usepackage{listings} % Für die Code umgebung (lstlisting)

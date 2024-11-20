@@ -1,0 +1,82 @@
+\newcounter{tbl}
+\setcounter{tbl}{0}
+\AtBeginEnvironment{tbl}{
+    \stepcounter{tbl}
+}
+
+%\newcolumntype{\math}{
+%    @{\hspace{1pt}} >{$} c <{$} @{\hspace{1pt}}
+%    %@{}>{$} c <{$}
+%}
+
+% Ein zentrierter aber bestimmt langer Typ.
+\NewColumnType{C}[1]{%
+    Q[
+        c,
+        wd=#1
+    ]
+}
+
+\NewColumnType{B}[2]{%
+    Q[
+        halign=#1,
+        valign=#2,
+        cmd={%
+            \bfseries
+        }
+    ]
+}
+
+\newenvironment{tbl}[2][]{%In die hier ungenutzten Eckigen Klammern
+                            %kann noch ein Default Titel eingestellt werden
+    \NewTblrTheme{theme}{
+        \DefTblrTemplate{contfoot-text}{theme}{Fortsetzung auf der nächsten Seite}
+        \SetTblrTemplate{contfoot-text}{theme}
+        \DefTblrTemplate{conthead-text}{theme}{(Fortsetzung)}
+        \SetTblrTemplate{conthead-text}{theme}
+        \DefTblrTemplate{conthead}{theme}{Tabelle \thesection.\arabic{tbl}}
+        \SetTblrTemplate{conthead}{theme}
+        \DefTblrTemplate{caption-tag}{theme}{Tabelle \thesection.\arabic{tbl}}
+        \SetTblrTemplate{caption-tag}{theme}
+        \DefTblrTemplate{caption-sep}{theme}{: }
+        \SetTblrTemplate{caption-sep}{theme}
+        \DefTblrTemplate{caption-text}{theme}{#1 }
+        \SetTblrTemplate{caption-text}{theme}
+    }
+    \begin{tblr}[
+        long,
+        theme=theme
+    ]{
+        width=\textwidth,
+        colspec={#2},
+        column{1} = {%
+                preto={%
+                    \raisebox{1.5em}{\hypertarget{l:\thesection.\arabic{tbl}:\arabic{rownum}}{}}
+                    \phantomsection
+                }
+            },
+        %cell{\arabic{rowcount}}{1} = {%
+        %        preto={%
+        %            \raisebox{1.5em}{\hypertarget{l:\thesection.\arabic{tbl}:\arabic{rowcount}}{}}
+        %            \phantomsection
+        %        }
+        %    }
+    }
+} {
+    \end{tblr}       
+}
+
+%Beispiel:
+%    \reftab{Text-Link}{1:2}
+\newcommand{\reftab}[2]{%
+    \hyperlink{l:#2}{#1}
+}
+
+%#1 wird einfach normal gedruckt
+%#2 ist die Referenz
+%Mit \arabic{tabs} wird auf den aktuellen stand des counters tabs
+%zugegriffen. \refctab greift also immer auf die letzte Tabelle zu.
+%#2 liefert dann nur die Zeilennummer beginnend bei 0
+\newcommand{\refctab}[2]{%
+    \hyperlink{l:\thesection.\arabic{tbl}:#2}{#1}
+}
