@@ -42,12 +42,18 @@
 \setEnvironment[default]{Code}{gray-white}
 
 \newcommand{\includeJava}[3][]{%
-    \begin{Code}{#2}
-        \vspace{-1em}
-        \hspace{0.01\textwidth}
-        \begin{minipage}[h]{0.99\textwidth}
-            \lstinputlisting[#1]{#3/#2.java}
-        \end{minipage}
-        \vspace{-1em}
-    \end{Code}
+    \hfill
+    \allowbreak
+    \vspace{1pt}
+    \begin{minipage}[htp]{\linewidth}
+        \begin{Code}{#2}
+            \vspace{-1em}
+            \hspace{0.01\textwidth}
+            \begin{minipage}[htp]{0.99\textwidth}
+                \lstinputlisting[#1]{lib/#3/#2.java}
+            \end{minipage}
+            \vspace{-1em}
+        \end{Code}
+    \vspace{0pt} %Ja diese Zeile macht tatsächlich einen Unterschied
+    \end{minipage}
 }
