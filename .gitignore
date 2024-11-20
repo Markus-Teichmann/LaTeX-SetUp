@@ -1,7 +1,6 @@
 *
 !*/
 !.gitignore
-!main.tex
 !README.md
 !src/*.tex
 !main/*.tex
