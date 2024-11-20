@@ -2,8 +2,17 @@
 \definecolor{aauBlue}{RGB}{44,98,118}
 %Braucht das Packet fancyhdr.
 \lfoot{%
-    \pbox{0.2\textwidth}{
-        \color{aauBlue} 12024261
+    \ifnumodd{\thepage}{
+        %True
+        \pbox{0.2\textwidth}{
+            \color{aauBlue} 12024261
+        }
+    }
+    {
+        %False
+        \pbox{0.4\textwidth}{
+            \color{aauBlue} \thepage
+        }
     }
 }
 \cfoot{%
@@ -12,8 +21,17 @@
     }
 }
 \rfoot{%
-    \pbox{0.4\textwidth}{
-        \color{aauBlue} \thepage
+    \ifnumodd{\thepage}{
+        %True
+        \pbox{0.4\textwidth}{
+            \color{aauBlue} \thepage
+        }
+    }
+    {
+        %False
+        \pbox{0.2\textwidth}{
+            \color{aauBlue} 12024261
+        }
     }
 }
 \renewcommand{\footrule}{\hspace{1mm} \color{aauDarkerBlue} \hrule height \defaultFooterRuleWidth}
