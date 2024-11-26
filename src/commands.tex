@@ -1,3 +1,12 @@
+% Ermöglicht es aus einer Liste den zu einem Index gehörenden Wert
+% auszulesen.
+% Einen Usecase gibt es zum Beispiel in codestyles Hier wird der Pfad
+% getrennt.
+% #1 ist der Index
+% #2 ist die Liste
+% #3 ist der Seperator der Werte der Liste
+\newcommand{\getListMember}[3]{\StrBetween[#1,\number\numexpr#1+1]{#3#2#3}{#3}{#3}}
+
 \newcommand{\blankPage}{
     \newpage
     \setThisPagestyle{plain}

@@ -39,8 +39,20 @@
 % moredelim = [is][\color{intelliJVariables}]{\\<}{\\>}
 %Das wird beim einlesen von Dokumenten aber echt schwer...
 
+% Wird nicht verwendet, habe nicht herausgefunden was hier schief
+% läuft :/
+%% #1 ist der Pfad zur Datei "Die Artifact-Id und Group-Id"
+%% #2 ist der Name der Datei
+%\newcommand{\useSpringBootPath}[2]{%
+%    \newcommand{\artifactID}{\getListMember{1}{#1}{/}}
+%    \expandafter\renewcommand{\examplepath}{lib/\artifactID/src/main/java/#1/#2.java}
+%}
+
 \setEnvironment[default]{Code}{gray-white}
 
+% #1 sind die Keyword-Variablen wie firstline=...
+% #2 ist der Name der .java Datei
+% #3 ist der Pfad zur Datei
 \newcommand{\includeJava}[3][]{%
     \hfill
     \allowbreak
