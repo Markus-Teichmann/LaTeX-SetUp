@@ -1,52 +1,61 @@
+% Leider muss die preamble wirklich ganz am Anfang stehen..
+% Danach alles Alphabetisch.
 \input{src/preamble}
+
 \input{src/biblatex}
-\input{src/commands}
-\input{src/svg}
+\input{src/citationstyles.tex}
+\input{src/crossreferencing.tex}
+\input{src/dateformat.tex}
+\input{src/gaps.tex}
+\input{src/listings}
+\input{src/multicol.tex}
 \input{src/pagestyles}
 \input{src/paraphrasing}
-\input{src/titled-framed-environments}
-\input{src/listings}
-%\input{src/proCon(alpha)}
-\input{src/multicol.tex}
-\input{src/crossreferencing.tex}
+\input{src/postamble.tex}
+\input{src/svg}
+\input{src/symbols.tex}
+\input{src/symbols.tex}
 \input{src/tabularray.tex}
+\input{src/textoperations.tex}
+\input{src/tikz.tex}
+\input{src/titled-framed-environments}
 
-\setImagePath{lib/img}
-\setPagestylePath{src/pagestyles}
-\setLibraryPath{lib}
-\setParaphrasingPath{src/paraphrasing}
+\setCitationstylePath{src/citationstyles}
 \setCodestylePath{src/codestyles}
+\setImagePath{lib/img}
+\setLibraryPath{lib}
+\setPagestylePath{src/pagestyles}
+\setParaphrasingPath{src/paraphrasing}
 \setTitledFramePath{src/titled-frames}
 
-
-\addlibresource
+\addlibresource % defined in src/biblatex.tex
 \setDefaultHeaderRuleWidth{1pt}
 \setDefaultFooterRuleWidth{1pt}
 
 \AfterEndPreamble{
-    \input{main/titlepage} \label{in:titlepage}      % Natürlich nur, wenn man eine Titlepage.
-    \blankPage
-    \setThisPagestyle{AAU-TOC}                      % Natürlich nur, wenn toc etwünscht.
-    \tableofcontents{}                            % Natürlich nur, wenn toc etwünscht.
-    \newpage                                    % Notwendig.
+    % Einstellungen für die Titelseite und das Inhaltsverzeichnis:
+        \input{main/titlepage} \label{in:titlepage}      % Natürlich nur, wenn man eine Titlepage.
+        \blankPage
+        \setThisPagestyle{AAU-TOC}                      % Natürlich nur, wenn toc etwünscht.
+        \tableofcontents{}                            % Natürlich nur, wenn toc etwünscht.
+        \newpage                                    % Notwendig.
 
-    %Letzte Einstellungen, welche dann für das gesamte Dokument gelten sollen.
-    %\setEnvironment{Sagemath}{gray-white}     % Alle möglichen Kästen die wir mit den Stilen bauen können.
-    \setCodestyle{springboot}                     % Stil des Quellcodes, falls wir welchen verwenden.
-    \setParaphrasing{AAU}          % Hier geht es um die Überschriften etc.
-    %\setThisPagestyle{Aufgabenblatt}           % Header und Footer - Lokal
-    \setPagestyle{AAU}                      % Header und Footer - global
-    %\captionsetup[figure]{labelformat=empty}   % Falls nötig, so lässt sich damit die Beschriftung von Abbildungen umgehen
-    %\setEnvironment[default]{Beispiel}{light-blue}  % Neue Umgebung.
-    %\setEnvironment[default]{Aufgabe}{light-gray}
-
-    \usetikzlibrary{calc}
-    \usetikzlibrary{intersections}
-    \usetikzlibrary{angles}
-    \usetikzlibrary{quotes}
+    % Style-Entscheidungen, welche dann für das gesamte Dokument gelten
+        %\captionsetup[figure]{labelformat=empty}   % Falls nötig, so lässt sich damit die Beschriftung von Abbildungen umgehen
+        \setCitationstyle{myStyle}
+        \setCodestyle{springboot}                     % Stil des Quellcodes, falls wir welchen verwenden.
+        \setPagestyle{AAU}                      % Header und Footer - global
+        \setParaphrasing{AAU}          % Hier geht es um die Überschriften etc.
+    
+    % Hier legen wir noch die Umgebungen fest die wir im laufe des
+    % Dokuments verwenden werden:
+        %\setEnvironment{Sagemath}{gray-white}     % Alle möglichen Kästen die wir mit den Stilen bauen können.
+        \setEnvironment[default]{Definition}{light-blue}  % Neue Umgebung.
+        %\setEnvironment[default]{Aufgabe}{light-gray}
 }
 
 \AtEndDocument{
-    \lit
-    %\anhang
+    % Einstellungen für das Literaturverzeichnis und den Anhang
+        \lit
+        %\anhang
 }

@@ -1,0 +1,15 @@
+\newcommand{\luecke}[1]{
+    %\xblackout{\LARGE #1}
+    \newdimen\mywidth
+    \setbox0=\vbox{#1}
+    \mywidth=\wd0
+    %\settowidth{\width0}{\widthof{#1}}
+    %\sbox{\textbox}{#1}
+    \phantom{\pbox{\mywidth}{#1}}
+}
+\newcommand{\textluecke}[1]{
+    \underline{\luecke{\LARGE #1}}
+}
+\newcommand{\tl}[1]{
+    \textluecke{#1}
+}

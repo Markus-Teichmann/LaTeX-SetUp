@@ -8,11 +8,15 @@
 
 % Der Befehl \refenv verlinkt auf die angegebene Umgebung z.B. eine
 % Definition: 
-% \refenv{Definition}{1.2}
+% \refenv[Skalarprodukt]{Definition:1.2}
 % Dabei ist es wichtig, dem gewählten frame Title Style
 % nach zu referenzieren!
-\newcommand{\refenv}[2]{%
-    \hyperlink{#1:#2}{#1 #2}
+\newcommand{\refenv}[2][]{%
+    \ifx\relax#1\relax%
+        \hyperlink{#2}{#2}
+    \else%
+        \hyperlink{#2}{#1}
+    \fi%
 }
 \renewcommand{\quote}[3]{%
     \glqq #1\grqq{}
@@ -30,3 +34,8 @@
         \citeauthor{#1}: #2 \cite{#1} \citeurl{#1}
     }
 }
+
+
+\newcommand{\footQuote}[3]{\glqq #1\grqq{}\footcite[#3]{#2}}
+\newcommand{\newFootRef}[3]{\glqq #1\grqq{} \hspace{-1.25ex} \footnotemark \footnotetext{\hspace{1ex} \hyperref[#3]{#2}}}
+\newcommand{\newQuote}[3]{\glqq #1\grqq{}\footcite[#3]{#2}}

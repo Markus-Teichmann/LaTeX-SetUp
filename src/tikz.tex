@@ -1,0 +1,30 @@
+\newcommand{\tikzmark}[1]{\tikz[baseline, remember picture] \coordinate (#1) {};}
+
+\AfterEndPreamble{
+    \usetikzlibrary{calc}
+    \usetikzlibrary{intersections}
+    \usetikzlibrary{angles}
+    \usetikzlibrary{quotes}
+}
+
+% Da es in tikz noch keinen "guten" Befehl für einen Kreis gibt, war
+% das ein erster Versuch selbst einen zu schreiben.
+% Nur eine Beta-Version hier muss noch weiter dran gearbeitet werden. Winkel stimmt nicht.
+% 
+%%\usetikzlibrary{intersections}
+%%\usetikzlibrary{calc}
+%\newcommand{\test}[4]{
+%    \path[name path = rim] (#2) circle (1cm);
+%    \path[name path = toA] (#2) -- (#1);
+%    \path[name path = toB] (#2) -- (#3);
+%    \path[name intersections = {of = rim and toA}];
+%    \path[name intersections = {of = rim and toB}];
+%    \pgfmathanglebetweenpoints{%
+%        \pgfpointanchor{intersection-1}{center}
+%    }
+%    {%
+%        \pgfpointanchor{intersection-2}{center}
+%    }
+%    \draw[dashed, very thick, red] (isectionA) arc (\pgfmathresult:360-\pgfmathresult:#4);
+%}
+%
