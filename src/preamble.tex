@@ -1,51 +1,68 @@
 \documentclass[a4paper, 14pt]{article}
 \usepackage[left=4cm, right=4cm, top=4cm, bottom=4cm]{geometry}
-%Achtung die Werte für top und bottom werden in commands auch verwendet.
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
 %Fonts:
     %\usepackage[default]{comfortaa}
     \usepackage[sfdefault,scaled=.85]{FiraSans}
-\usepackage{newtxsf}
-\usepackage{graphicx}
-%\usepackage{hyperref}
-\usepackage{longtable}  %Für die Longtable-Umgebung tabularray baut darauf auf
-\usepackage{caption}
-\usepackage[section]{placeins} %Für FloatBarrier um floates an stellen festzunageln
-\usepackage{atbegshi} % Behbt den Pagestyle bug
-\usepackage[x11names]{xcolor}
-%\usepackage{soulutf8} %Ermöglicht uns die Farbe und dicke der (unterstreichungsline) zu verändern. Verwendet in paraphrasing/underline.tex
-\usepackage{soul}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{mathrsfs}
-%\usepackage{pythontex} %Wird bisher nur in titled-framed-environments verwendet.
-\usepackage{etoolbox}
-%\usepackage{xltabular} %Für variable breite longtable spalten.
-\usepackage{microtype}
-\usepackage{pdflscape}
+    %\usepackage{lmodern}
+% Tabellenumgebung
+    %tabularray baut auf longtable auf
+    \usepackage{longtable}  
+    \usepackage{tabularray}
+% Rahmenumgebung
+    %Hier aber auch an anderen Stellen relevant, wegen definecolor
+    \usepackage[x11names]{xcolor}
+    \usepackage[framemethod=tikz, xcolor]{mdframed}
+% Sourcecode - Umgebung
+    \usepackage{listings} 
+% Crossreferencing
+    \usepackage[hyperfootnotes=false]{hyperref}
+% Bilder bzw. Floats
+    %Gibt uns eine FloatBarrier um floates an Stellen festzunageln
+    \usepackage[section]{placeins}
+    %Bilder selber zeichnen:
+    \usepackage{tikz}
+    %Um Bilder hinzuzufügen (z.B. svg Dateien ;)
+    \usepackage{import}
+% Kontrollfluss verändern:
+    % Gibt uns Ankerpunkte um Code entsprechend auszuführen.
+    \usepackage{atbegshi} 
+    % Using IfEndWith in frame-title-styles to determine if the
+    % subsection is zero
+    \usepackage{xstring}
+% Für Paraphrasing - Style:
+    % Ermöglicht uns die Farbe und dicke der (unterstreichungsline) zu verändern.
+    % Verwendet in paraphrasing/underline.tex
+    \usepackage{soul}
+    % Grundlage: Ermöglicht uns die Stile für Sections, Subsections...
+    \usepackage{titlesec}
+% Mathe-Symbole:
+    \usepackage{amssymb}
+    \usepackage{amsmath}
+    \usepackage{mathrsfs}
+% Pagestyling:
+    \usepackage{fancyhdr}
+    % Um in den Header den Platzverbrauch zu regulieren.
+    \usepackage{pbox}
+% Text gleichmäßig in Spalten aufteilen
+    \usepackage[colaction]{multicol}
+
+% Pakete die das CleanUp nicht überstanden haben:
+%\usepackage{multirow} % Vermutlich unnötig, da tbl
+%\usepackage[modulo]{lineno}
+%\usepackage{graphicx} % Da wir schon xcolor verwenden
+%\usepackage{color} % Da wir schon xcolor verwenden
+%\usepackage{calc} % Bietet Optionen für Counter ist hier aber
+%scheinbar obsolet.
+%\usepackage{changepage}
+%\usepackage{transparent}
+%\usepackage{pdfpages}
+%\usepackage{newtxsf}
+%\usepackage{caption}
+%\usepackage{microtype}
+%\usepackage{pdflscape}
+%\usepackage{setspace}
 %\usepackage{xifthen}
-\usepackage{setspace}
-\usepackage[modulo]{lineno}
-\usepackage[colaction]{multicol}
-\usepackage{fancyhdr}
-%\usepackage{lmodern}
-\usepackage{titlesec}
-\usepackage{import}
-\usepackage{xifthen}
-\usepackage{pdfpages}
-\usepackage{transparent}
-\usepackage{tikz}
-\usepackage[framemethod=tikz, xcolor]{mdframed}
-\usepackage{color}
-\usepackage{xstring}
-\usepackage[hyperfootnotes=false]{hyperref}
-\usepackage{multirow}
-%\usepackage{plantuml}
-\usepackage{pbox} % Wird in den Headdern verwendet.
-%\usepackage{censor}
-\usepackage{changepage}
-\usepackage{calc}
-\usepackage{tabularray} % Für die Tabellenumgebung (tblr)
-\usepackage{listings} % Für die Code umgebung (lstlisting)
+%\usepackage{etoolbox}

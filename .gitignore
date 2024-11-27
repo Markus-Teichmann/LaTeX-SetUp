@@ -4,8 +4,6 @@
 !README.md
 !src/*.tex
 !main/*.tex
-main/titlepage.tex
-main/init.tex
 lib/*/
 !lib/bibfiles/*.bib
 !lib/img/svg/Universitaet_klagenfurt_logo.pdf
