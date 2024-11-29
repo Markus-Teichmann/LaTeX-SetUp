@@ -1,5 +1,5 @@
-\renewcommand{\setFrameTitle}[2]{%
+\renewcommand{\setFrameTitle}[3][]{%
     \renewcommand{\getFrameTitle}{
-        #1 \thesection{} #2
+        #2 \thesection{} #3 \checkedCitationmark{#1}
     }
 }

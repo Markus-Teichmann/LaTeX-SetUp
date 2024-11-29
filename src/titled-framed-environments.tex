@@ -1,3 +1,22 @@
+% pgfkeys ermöglicht es keyword Argumente an einen Befehl zu
+% übergeben. z.B. \citationText{author=Cosmina, note=vgl. S.123} um
+% auf diese Keywords jetzt zuzugreifen wird im folgendem ein passender
+% Befehl definiert. z.B. \citationAuthor der dann den Wert (hier
+% Cosmina) erhält. Dies funktioniert durch den Aufruf von
+% \pgfkeys{/citation/.cd, #1} in \citationtext. Weiter kann dann in
+% \citationtext über die definierten Befehle \citationAuthor und
+% \citationNote auf die übergebenen Werte also "Cosmina" und "vgl.
+% S.123" zugreifen.
+\pgfkeys{%
+    /titledFramedEnvironments/.unknown/.code = { \relax },
+    /titledFramedEnvironments/.cd,
+        titlestyle/.code = {%
+            \ifx#1\empty\else
+                \def\titledFramedEnvironmentsTitlestyle{#1}
+            \fi
+        }
+}
+
 \newcommand{\setTitledFramePath}[1]{%
     \newcommand{\titledFramePath}{#1}
     \newcommand{\setFrameLabelStyle}{}
@@ -7,27 +26,54 @@
     \newcommand{\setEnvironmentStyle}{}
 }
 
-\newcommand{\setEnvironment}[3][default]{%
+\newcommand{\setEnvironment}[3][]{%
 %
-    %#1 ist der Stil des Titels (hauptsächlich wirkt sich das auf die
-    %Nummerierung aus. Ist aber ein optionaler Parameter und wird,
-    %wenn nicht angegeben auf default gesetzt.)
+    % #1 ist ein Optionaler Parameter. Er enthält eine Liste von mit
+    % einem Komma getrennten Key-Value Paaren, die mittels pgfkeys
+    % passend benannte macros definieren, die im Verlaufe des Codes
+    % dann an passenden Stellen ihre Anwendung finden.
+    % Hier besonders relevant ist das Key-Value paar
+    % titlestyle=default. Es beschreibt den Stil des Titels
+    % (hauptsächlich wirkt sich das auf die
+    % Nummerierung aus. Der Default wert des Paars ist default und
+    % abgerufen kann der Wert mit dem Befehl \titledFramedEnvironmentsTitlestyle
     %
     %#2 ist der Name der Umgebung z.b. Definition oder Satz.
     %#3 ist der Stil der Umgebung, also z.B. light-blue oder
     %gray-white.
 %
+%
+    % In folgendem wollen wir die optionale Variable weiter ausnutzen,
+    % indem wir durch pgfkeys die Möglichkeit erhalten weitere Keyword
+    % arguments anzugeben, wie zum Beispiel eine Referenz zu einem
+    % Author oder ähnlichem. Hier interessiert uns aber nur der
+    % Titelstil also wie das aussieht und nicht, der Inhalt, darum
+    % wird sich in anderen Dateien wie z.B. Citationstyles gekümmert.
+    \pgfkeys{/titledFramedEnvironments/.cd, #1}
+    \ifdefined\titledFramedEnvironmentsTitlestyle\else
+        \def\titledFramedEnvironmentsTitlestyle{default}
+    \fi
+    % Sollte \titledFramedEnvironmentsTitlestyle vor diesem Code nicht
+    % definiert gewesen sein, weil er zum Beispiel in #1 nicht genannt
+    % wurde, so ist er spätestens nach diesem Code mit dem Defaultwert
+    % default definiert.
+%
     \newcounter{#2}
     \listadd{\counterList}{#2}
-    \input{./\titledFramePath/frame-title-label-styles/#1}
+    \input{./\titledFramePath/frame-title-label-styles/\titledFramedEnvironmentsTitlestyle}
     \setFrameLabelStyle{#2}
-    \newenvironment{#2}[2][#1] 
+    \NewDocumentEnvironment{#2}{O{}m}
+    %\newenvironment{#2}[2][] 
     %
-        %##1 beschreibt den Stil des Titels (hauptsächlich wirkt sich
-        %das auf die Nummerierung aus.) Es ist ein optionaler
-        %Parameter und solte er nicht angegeben werden, so wird er auf
-        %#1 gesetzt. #1 beschreibt genau das selbe, wird nur früher
-        %schon gesetzt. (in init.tex)
+        % ##1 enthält eine Liste von Key-Value Paaren wie zum Beispiel
+        % titlestyle = default die sich mithilfe von pgfkeys auf
+        % verschiedene Dinge auswirken. Der Wert von titlestyle definiert
+        % den Befehl \titledFramedEnvironmentsTitlestyle neu. Dieser  
+        % beschreibt den Stil des Titels (hauptsächlich wirkt sich das auf
+        % die Nummerierung aus.) Der Befehl ist oben schon definiert,
+        % sollte hier also nichts angegeben sein, so wird die
+        % vorangegangene Definition verwendet. Die vorangegangene
+        % Definition wird in der init Datei gesetzt.
         %
         %##2 ist der Inhalt des Titels.
         %
@@ -36,8 +82,9 @@
     %
     {
         %begin-code
-        \input{./\titledFramePath/frame-title-styles/##1}
-        \setFrameTitle{#2}{##2}
+        \pgfkeys{/titledFramedEnvironments/.cd, ##1}
+        \input{./\titledFramePath/frame-title-styles/\titledFramedEnvironmentsTitlestyle}
+        \setFrameTitle[##1]{#2}{##2}
         \input{./\titledFramePath/#3}
         \setEnvironmentStyle{#3}
         \begin{#3}
@@ -45,6 +92,7 @@
     {
         %end-code
         \end{#3}
+        \citationtext{##1}
     }
 }
 \newcommand{\resetTitledFrameEnvironmentCounters}{%
