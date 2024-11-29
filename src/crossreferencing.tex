@@ -18,24 +18,22 @@
         \hyperlink{#2}{#1}
     \fi%
 }
-\renewcommand{\quote}[3]{%
-    \glqq #1\grqq{}
-    \hspace{-1ex}
-    \footnotemark
-    \hspace{-1ex}
-    \footnotetext{%
-        \citeauthor{#2}: #3 \cite{#2} \citeurl{#2}
-    }
-}
-\newcommand{\source}[2]{%
-    \footnotemark
-    \hspace{-1ex}
-    \footnotetext{%
-        \citeauthor{#1}: #2 \cite{#1} \citeurl{#1}
-    }
+
+%\newcommand{\footQuote}[3]{\glqq #1\grqq{}\footcite[#3]{#2}}
+%\newcommand{\newFootRef}[3]{\glqq #1\grqq{} \hspace{-1.25ex} \footnotemark \footnotetext{\hspace{1ex} \hyperref[#3]{#2}}}
+%\newcommand{\newQuote}[3]{\glqq #1\grqq{}\footcite[#3]{#2}}
+
+%Beispiel:
+%    \reftab{Text-Link}{1:2}
+\newcommand{\reftab}[2]{%
+    \hyperlink{l:#2}{#1}
 }
 
-
-\newcommand{\footQuote}[3]{\glqq #1\grqq{}\footcite[#3]{#2}}
-\newcommand{\newFootRef}[3]{\glqq #1\grqq{} \hspace{-1.25ex} \footnotemark \footnotetext{\hspace{1ex} \hyperref[#3]{#2}}}
-\newcommand{\newQuote}[3]{\glqq #1\grqq{}\footcite[#3]{#2}}
+%#1 wird einfach normal gedruckt
+%#2 ist die Referenz
+%Mit \arabic{tabs} wird auf den aktuellen stand des counters tabs
+%zugegriffen. \refctab greift also immer auf die letzte Tabelle zu.
+%#2 liefert dann nur die Zeilennummer beginnend bei 0
+\newcommand{\refctab}[2]{%
+    \hyperlink{l:\thesection.\arabic{tbl}:#2}{#1}
+}

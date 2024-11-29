@@ -65,18 +65,3 @@
 } {
     \end{tblr}       
 }
-
-%Beispiel:
-%    \reftab{Text-Link}{1:2}
-\newcommand{\reftab}[2]{%
-    \hyperlink{l:#2}{#1}
-}
-
-%#1 wird einfach normal gedruckt
-%#2 ist die Referenz
-%Mit \arabic{tabs} wird auf den aktuellen stand des counters tabs
-%zugegriffen. \refctab greift also immer auf die letzte Tabelle zu.
-%#2 liefert dann nur die Zeilennummer beginnend bei 0
-\newcommand{\refctab}[2]{%
-    \hyperlink{l:\thesection.\arabic{tbl}:#2}{#1}
-}
