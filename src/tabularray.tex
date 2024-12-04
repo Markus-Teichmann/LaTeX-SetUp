@@ -1,7 +1,23 @@
+\pgfkeys{%
+    /tbl/.unknown/.code = { \relax },
+    /tbl/.cd,
+        caption/.code = {%
+            \ifx#1\empty\else
+                \def\tblCaption{#1}
+            \fi
+        },
+        citation/.code = {%
+            \ifx#1\empty\else
+                \def\tblCitation{#1}
+            \fi
+        }
+}
+
 \newcounter{tbl}
 \setcounter{tbl}{0}
 \AtBeginEnvironment{tbl}{
     \stepcounter{tbl}
+    %\addtocounter{footnote}{-3}
 }
 
 %\newcolumntype{\math}{
@@ -27,8 +43,12 @@
     ]
 }
 
-\newenvironment{tbl}[2][]{%In die hier ungenutzten Eckigen Klammern
+\NewDocumentEnvironment{tbl}{O{}m}{
+%\newenvironment{tbl}[2][]{%In die hier ungenutzten Eckigen Klammern
                             %kann noch ein Default Titel eingestellt werden
+    \def\tblCaption{}
+    \def\tblCitation{}
+    \pgfkeys{/tbl/.cd, #1}
     \NewTblrTheme{theme}{
         \DefTblrTemplate{contfoot-text}{theme}{Fortsetzung auf der nächsten Seite}
         \SetTblrTemplate{contfoot-text}{theme}
@@ -38,9 +58,9 @@
         \SetTblrTemplate{conthead}{theme}
         \DefTblrTemplate{caption-tag}{theme}{Tabelle \thesection.\arabic{tbl}}
         \SetTblrTemplate{caption-tag}{theme}
-        \DefTblrTemplate{caption-sep}{theme}{: }
+        \DefTblrTemplate{caption-sep}{theme}{\checkedCitationmark{#1}: }
         \SetTblrTemplate{caption-sep}{theme}
-        \DefTblrTemplate{caption-text}{theme}{#1 }
+        \DefTblrTemplate{caption-text}{theme}{\tblCaption}
         \SetTblrTemplate{caption-text}{theme}
     }
     \begin{tblr}[
@@ -65,4 +85,8 @@
 } {
     \end{tblr}%
     \noindent%
+    \addtocounter{footnote}{-2} %Keine Ahnung warum das Notwendig ist,
+    % aber immerhin können wir jetzt auch tbl zitieren zumindest
+    % halbwegs.
+    \citationtext{#1}
 }
