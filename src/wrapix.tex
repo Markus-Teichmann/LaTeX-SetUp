@@ -1,0 +1,67 @@
+\newdimen\wrapixImageHeight
+\newdimen\wrapixImageWidth
+\newdimen\wrapixTextWidth
+
+\pgfkeys{%
+    /wrapix/.unknown/.code = { \relax },
+    /wrapix/.cd,
+        width/.code = {%
+            \ifx#1\empty\else
+                \def\wrapixWidth{#1}
+            \fi
+        },
+        left/.code = {%
+            \def\wrapixLeft{true}
+        }
+}
+
+\NewDocumentCommand{\setBox}{mmm}{%
+    %\fbox{
+    \parbox[b][#1][t]{#2}{%
+            \vspace{0.5ex}
+            #3
+            %\vfil
+        }
+    %}    
+}
+
+\NewDocumentCommand{\setImage}{O{width=\textwidth}m}{%
+    %\vspace{1ex}
+    \mbox{
+        \includegraphics[#1]{#2}
+    }
+    %\vspace{1ex}
+}
+
+
+\NewDocumentEnvironment{wrapix}{O{}m+b}{%
+    \def\wrapixLeft{}
+    \def\wrapixWidth{}
+    \pgfkeys{/wrapix/.cd, #1}
+    \ifx\wrapixWidth\empty
+        \setImage{#2}
+    \else
+        \settoheight{\wrapixImageHeight}{%
+            \setImage[width=\wrapixWidth]{#2}
+        }
+        \settowidth{\wrapixImageWidth}{%
+            \setImage[width=\wrapixWidth]{#2}
+        }
+        \setlength{\wrapixTextWidth}{%
+            \dimeval{\textwidth - \wrapixImageWidth - 0.01\textwidth}
+        }
+        \ifx\wrapixLeft\empty
+            %Bild nach rechts
+            %\hspace{-0.08\textwidth}
+            \setBox{\wrapixImageHeight}{\wrapixTextWidth}{#3}
+            \setImage[width=\wrapixWidth]{#2}
+        \else
+            %Bild nach links
+            \hspace{-0.05\textwidth}
+            \setImage[width=\wrapixWidth]{#2}
+            \setBox{\wrapixImageHeight}{\wrapixTextWidth}{#3}
+        \fi
+    \fi
+}{
+
+}
