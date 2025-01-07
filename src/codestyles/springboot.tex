@@ -1,0 +1,415 @@
+% Wichtig in Zeile 12 den Namen anpassen!
+
+\pgfkeys{%
+    /lstlisting/.unknown/.code = { \relax },
+    /lstlisting/.cd,
+        firstline/.code = {%
+            \ifx#1\empty\else
+                \def\lstlistingFirstline{#1}
+            \fi
+        },
+        lastline/.code = {%
+            \ifx#1\empty\else
+                \def\lstlistingLastline{#1}
+            \fi
+        },
+        linerange/.code = {%
+            \ifx#1\empty\else
+                \def\lstlistingLinerange{#1}
+            \fi
+        },
+        language/.code = {%
+            \ifx#1\empty\else
+                \def\lstlistingLanguage{#1}
+            \fi
+        },
+        filetype/.code = {%
+            \ifx#1\empty\else
+                \def\lstlistingFiletype{#1}
+            \fi
+        }
+}
+
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{intelliJBlau}{RGB}{14,54,170}
+\definecolor{intelliJAnnotations}{RGB}{158,143,23}
+\definecolor{intelliJStrings}{RGB}{13,130,19}
+\definecolor{intelliJBackground}{RGB}{255,255,255}
+\definecolor{intelliJVariables}{RGB}{129,6,138}
+\definecolor{intelliJMethodNames}{RGB}{0,109,147}
+%\definecolor{intelliJComments}{RGB}{}
+
+\lstdefinestyle{springboot}{
+    %language=Java,
+    backgroundcolor=\color{intelliJBackground},   
+    commentstyle=\color{codegray},
+    keywordstyle=\color{intelliJBlau},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{intelliJStrings},
+    %basicstyle=\ttfamily\footnotesize,
+    %basicstyle=\ttfamily,
+    %basicstyle=\footnotesize,
+    basicstyle=\small,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    moredelim = [l][\color{intelliJAnnotations}]{@},
+    moredelim = [is][\color{intelliJMethodNames}]{\\(}{\\)},
+    moredelim = [is][\color{intelliJVariables}]{\\<}{\\>}
+}
+%Wie wir sehen fehlen hier noch für Methodennamen und Variablen noch
+%die passenden Farben, die können wir noch mit passenden Delimitern
+%festlegen. Zum Beispiel mit:
+% moredelim = [is][\color{intelliJMethodNames}]{\\(}{\\)}
+% moredelim = [is][\color{intelliJVariables}]{\\<}{\\>}
+%Das wird beim einlesen von Dokumenten aber echt schwer...
+
+% Wird nicht verwendet, habe nicht herausgefunden was hier schief
+% läuft :/
+%% #1 ist der Pfad zur Datei "Die Artifact-Id und Group-Id"
+%% #2 ist der Name der Datei
+%\newcommand{\useSpringBootPath}[2]{%
+%    \newcommand{\artifactID}{\getListMember{1}{#1}{/}}
+%    \expandafter\renewcommand{\examplepath}{lib/\artifactID/src/main/java/#1/#2.java}
+%}
+
+\setEnvironment[default]{Code}{gray-white}
+
+\NewDocumentCommand{\includeSpringQuery}{O{}mm}{%
+    \lstset{language=SQL}
+    \def\lstlistingFirstline{}
+    \def\lstlistingLastline{}
+    \def\lstlistingLinerange{}
+    \pgfkeys{/lstlisting/.cd, #1}
+    \hfill
+    \allowbreak
+    \vspace{1pt}
+    \parbox{\linewidth}{%
+        \begin{Code}[#1]{#2}
+            \vspace{-1em}
+            \hspace{0.01\textwidth}
+                \ifx\lstlistingFirstline\empty
+                    \ifx\lstlistingLastline\empty
+                        \ifx\lstlistingLinerange\empty
+                            \lstinputlisting{%
+                                lib/#3/src/main/resources/querys/#2.sql
+                            }
+                        \else
+                            \lstinputlisting[%
+                                linerange=\lstlistingLinerange
+                            ]{%
+                                lib/#3/src/main/resources/querys/#2.sql
+                            }
+                        \fi
+                    \else
+                        \ifx\lstlistingLinerange\empty
+                            \lstinputlisting[lastline=\lstlistingLastline]{}
+                        \else
+                            \lstinputlisting[%
+                                lastline=\lstlistingLastline,
+                                linerange=\lstlistingLinerange
+                            ]{%
+                                lib/#3/src/main/resources/querys/#2.sql
+                            }
+                        \fi
+                    \fi
+                \else 
+                    \ifx\lstlistingLastline\empty
+                        \ifx\lstlistingLinerange\empty
+                            \lstinputlisting[%
+                                firstline=\lstlistingFirstline
+                            ]{%
+                                lib/#3/src/main/resources/querys/#2.sql
+                            }
+                        \else
+                            \lstinputlisting[%
+                                firstline=\lstlistingFirstline,
+                                linerange=\lstlistingLinerange
+                            ]{%
+                                lib/#3/src/main/resources/querys/#2.sql
+                            }
+                        \fi
+                    \else
+                        \ifx\lstlistingLinerange\empty
+                            \lstinputlisting[%
+                                firstline=\lstlistingFirstline,
+                                lastline=\lstlistingLastline
+                            ]{%
+                                lib/#3/src/main/resources/querys/#2.sql
+                            }
+                        \else
+                            \lstinputlisting[%
+                                firstline=\lstlistingFirstline,
+                                lastline=\lstlistingLastline,
+                                linerange=\lstlistingLinerange
+                            ]{%
+                                lib/#3/src/main/resources/querys/#2.sql
+                            }
+                        \fi
+                    \fi
+                \fi
+            \vspace{-1em}
+        \end{Code}
+    \vspace{0pt} %Ja diese Zeile macht tatsächlich einen Unterschied
+    }
+    \citationtext{#1}%
+
+}
+
+% #1 sind die Keyword-Variablen wie firstline=..., author=...
+% #2 ist der Name der .java Datei
+% #3 ist die Artifact-Id wie in IntelliJ
+% #4 ist der Modul-Pfad zur Datei falls vorhanden
+\NewDocumentCommand{\includeSpringCode}{O{}mmO{}}{%
+    \lstset{language=Java}
+    \def\lstlistingFirstline{}
+    \def\lstlistingLastline{}
+    \def\lstlistingLinerange{}
+    \pgfkeys{/lstlisting/.cd, #1}
+    \hfill
+    \allowbreak
+    \vspace{1pt}
+    \parbox{\linewidth}{%
+        \begin{Code}[#1]{#2}
+            \vspace{-1em}
+            \hspace{0.01\textwidth}
+            \ifx\lstlistingLinerange\empty
+                \ifx\lstlistingFirstline\empty
+                    \ifx\lstlistingLastline\empty
+                        \ifx\relax#4\relax
+                            \lstinputlisting{
+                                lib/#3/src/main/java/#3/#2.java
+                            }
+                        \else
+                            \lstinputlisting{
+                                lib/#3/src/main/java/#3/#4/#2.java
+                            }
+                        \fi
+                    \else
+                        \ifx\relax#4\relax
+                            \lstinputlisting[
+                                lastline=\lstlistingLastline
+                            ]{
+                                lib/#3/src/main/java/#3/#2.java
+                            }
+                        \else
+                            \lstinputlisting[
+                                lastline=\lstlistingLastline
+                            ]{
+                                lib/#3/src/main/java/#3/#4/#2.java
+                            }
+                        \fi
+                    \fi
+                \else
+                    \ifx\lstlistingLastline\empty
+                        \ifx\relax#4\relax
+                            \lstinputlisting[
+                                firstline=\lstlistingFirstline
+                            ]{
+                                lib/#3/src/main/java/#3/#2.java
+                            }
+                        \else
+                            \lstinputlisting[
+                                firstline=\lstlistingFirstline
+                            ]{
+                                lib/#3/src/main/java/#3/#4/#2.java
+                            }
+                        \fi
+                    \else
+                        \ifx\relax#4\relax
+                            \lstinputlisting[
+                                firstline=\lstlistingFirstline,
+                                lastline=\lstlistingLastline
+                            ]{
+                                lib/#3/src/main/java/#3/#2.java
+                            }
+                        \else
+                            \lstinputlisting[
+                                firstline=\lstlistingFirstline,
+                                lastline=\lstlistingLastline
+                            ]{
+                                lib/#3/src/main/java/#3/#4/#2.java
+                            }
+                        \fi
+                    \fi
+                \fi
+            \else
+                \ifx\lstlistingFirstline\empty
+                    \ifx\lstlistingLastline\empty
+                        \ifx\relax#4\relax
+                            \lstinputlisting[
+                                linerange=\lstlistingLinerange
+                            ]{
+                                lib/#3/src/main/java/#3/#2.java
+                            }
+                        \else
+                            \lstinputlisting[
+                                linerange=\lstlistingLinerange
+                            ]{
+                                lib/#3/src/main/java/#3/#4/#2.java
+                            }
+                        \fi
+                    \else
+                        \ifx\relax#4\relax
+                            \lstinputlisting[
+                                linerange=\lstlistingLinerange,
+                                lastline=\lstlistingLastline
+                            ]{
+                                lib/#3/src/main/java/#3/#2.java
+                            }
+                        \else
+                            \lstinputlisting[
+                                linerange=\lstlistingLinerange,
+                                lastline=\lstlistingLastline
+                            ]{
+                                lib/#3/src/main/java/#3/#4/#2.java
+                            }
+                        \fi
+                    \fi
+                \else
+                    \ifx\lstlistingLastline\empty
+                        \ifx\relax#4\relax
+                            \lstinputlisting[
+                                linerange=\lstlistingLinerange,
+                                firstline=\lstlistingFirstline
+                            ]{
+                                lib/#3/src/main/java/#3/#2.java
+                            }
+                        \else
+                            \lstinputlisting[
+                                linerange=\lstlistingLinerange,
+                                firstline=\lstlistingFirstline
+                            ]{
+                                lib/#3/src/main/java/#3/#4/#2.java
+                            }
+                        \fi
+                    \else
+                        \ifx\relax#4\relax
+                            \lstinputlisting[
+                                linerange=\lstlistingLinerange,
+                                firstline=\lstlistingFirstline,
+                                lastline=\lstlistingLastline
+                            ]{
+                                lib/#3/src/main/java/#3/#2.java
+                            }
+                        \else
+                            \lstinputlisting[
+                                linerange=\lstlistingLinerange,
+                                firstline=\lstlistingFirstline,
+                                lastline=\lstlistingLastline
+                            ]{
+                                lib/#3/src/main/java/#3/#4/#2.java
+                            }
+                        \fi
+                    \fi
+                \fi
+            \fi
+            \vspace{-1em}
+        \end{Code}
+    \vspace{0pt} %Ja diese Zeile macht tatsächlich einen Unterschied
+    }
+    \citationtext{#1}%
+}
+
+% #1 sind die Keyword-Variablen wie firstline=...
+% #2 ist der Name der .java Datei
+% #3 ist der Pfad zur .java Datei ab lib/
+\newcommand{\includeCode}[3][]{%
+    \def\lstlistingFiletype{}
+    \def\lstlistingLanguage{}
+    \def\lstlistingFirstline{}
+    \def\lstlistingLastline{}
+    \def\lstlistingLinerange{}
+    \pgfkeys{/lstlisting/.cd, #1}
+    \ifx\lstlistingLanguage\empty
+        \def\lstlistingLanguage{java}
+    \fi
+    \ifx\lstlistingFiletype\empty
+        \def\lstlistingFiletype{\lstlistingLanguage}
+    \fi
+    \lstset{language=\lstlistingLanguage}
+    \hfill
+    \allowbreak
+    \vspace{1pt}
+    \parbox{\linewidth}{%
+        \begin{Code}[#1]{#2}
+            \vspace{-1em}
+            \hspace{0.01\textwidth}
+                \ifx\lstlistingFirstline\empty
+                    \ifx\lstlistingLastline\empty
+                        \ifx\lstlistingLinerange\empty
+                            \lstinputlisting{%
+                                lib/#3/#2.\lstlistingFiletype
+                            }
+                        \else
+                            \lstinputlisting[%
+                                linerange=\lstlistingLinerange
+                            ]{%
+                                lib/#3/#2.\lstlistingFiletype
+                            }
+                        \fi
+                    \else
+                        \ifx\lstlistingLinerange\empty
+                            \lstinputlisting[%
+                                lastline=\lstlistingLastline
+                            ]{%
+                                lib/#3/#2.\lstlistingFiletype
+                            }
+                        \else
+                            \lstinputlisting[%
+                                lastline=\lstlistingLastline,
+                                linerange=\lstlistingLinerange
+                            ]{%
+                                lib/#3/#2.\lstlistingFiletype
+                            }
+                        \fi
+                    \fi
+                \else 
+                    \ifx\lstlistingLastline\empty
+                        \ifx\lstlistingLinerange\empty
+                            \lstinputlisting[%
+                                firstline=\lstlistingFirstline
+                            ]{%
+                                lib/#3/#2.\lstlistingFiletype
+                            }
+                        \else
+                            \lstinputlisting[%
+                                firstline=\lstlistingFirstline,
+                                linerange=\lstlistingLinerange
+                            ]{%
+                                lib/#3/#2.\lstlistingFiletype
+                            }
+                        \fi
+                    \else
+                        \ifx\lstlistingLinerange\empty
+                            \lstinputlisting[%
+                                firstline=\lstlistingFirstline,
+                                lastline=\lstlistingLastline
+                            ]{%
+                                lib/#3/#2.\lstlistingFiletype
+                            }
+                        \else
+                            \lstinputlisting[%
+                                firstline=\lstlistingFirstline,
+                                lastline=\lstlistingLastline,
+                                linerange=\lstlistingLinerange
+                            ]{%
+                                lib/#3/#2.\lstlistingFiletype
+                            }
+                        \fi
+                    \fi
+                \fi
+            \vspace{-1em}
+        \end{Code}
+    \vspace{0pt} %Ja diese Zeile macht tatsächlich einen Unterschied
+    }
+    \citationtext{#1}%
+}

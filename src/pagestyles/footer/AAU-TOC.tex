@@ -1,0 +1,35 @@
+\definecolor{aauDarkerBlue}{RGB}{4,62,80}
+\definecolor{aauBlue}{RGB}{44,98,118}
+%Braucht das Packet fancyhdr.
+\lfoot{%
+    \ifnumodd{\thepage}{
+        %True
+        \pbox{0.2\textwidth}{
+            \color{aauBlue} 12024261
+        }
+    }
+}
+\cfoot{%
+    \pbox{0.4\textwidth}{
+        \color{aauBlue} \href{mailto:markuste@edu.aau.at}{markuste@edu.aau.at}
+    }
+}
+\rfoot{%
+    \ifnumodd{\thepage}{
+        %True
+    }
+    {
+        %False
+        \pbox{0.2\textwidth}{
+            \color{aauBlue} 12024261
+        }
+    }
+}
+\renewcommand{\footrule}{\hspace{1mm} \color{aauDarkerBlue} \hrule height \defaultFooterRuleWidth}
+\renewcommand{\footrulewidth}{\defaultFooterRuleWidth}
+%\thepage       %Nummer der aktuellen Seite
+%\leftmark      %Aktueller Kapitelname
+%\rightmark     %Aktueller Unterkapitelname
+%\chaptername   %Das Wort:"Kapitel"
+%\thechapter    %Aktuelle Kapitelnummerrierung
+%\thesection    %Aktuelle Teilnummerierung

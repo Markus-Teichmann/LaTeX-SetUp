@@ -3,6 +3,15 @@
 !.gitignore
 !README.md
 !src/*.tex
+!src/citationstyles/*.tex
+!src/codestyles/*.tex
+!src/pagestyles/*.tex
+!src/pagestyles/footer/*.tex
+!src/pagestyles/header/*.tex
+!src/paraphrasing/*.tex
+!src/titled-frames/*.tex
+!src/titled-frames/frame-title-label-styles/*.tex
+!src/titled-frames/frame-title-styles/*.tex
 !main/*.tex
 lib/*/
 !lib/bibfiles/*.bib

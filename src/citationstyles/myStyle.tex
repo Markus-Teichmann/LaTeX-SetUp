@@ -1,0 +1,95 @@
+% pgfkeys ermöglicht es keyword Argumente an einen Befehl zu
+% übergeben. z.B. \citationText{author=Cosmina, note=vgl. S.123} um
+% auf diese Keywords jetzt zuzugreifen wird im folgendem ein passender
+% Befehl definiert. z.B. \citationAuthor der dann den Wert (hier
+% Cosmina) erhält. Dies funktioniert durch den Aufruf von
+% \pgfkeys{/citation/.cd, #1} in \citationtext. Weiter kann dann in
+% \citationtext über die definierten Befehle \citationAuthor und
+% \citationNote auf die übergebenen Werte also "Cosmina" und "vgl.
+% S.123" zugreifen.
+\pgfkeys{%
+    /citation/.unknown/.code = { \relax },
+    /citation/.cd,
+        author/.code = {%
+            \ifx#1\empty\else
+                \def\citationAuthor{#1}
+            \fi
+        },
+        note/.code = {%
+            \ifx#1\empty\else
+                \def\citationNote{#1}
+            \fi
+        }
+}
+
+% Die citationmark wird überall dort plaziert, wo auch das zu
+% zitierende bzw. das nicht eigene steht.
+%
+% #1 ist optional kann aber Informationen in Form einer Liste zur
+% Quelle enthalten. Zum Beispiel eine Referenz zu einem der .bib -
+% files in lib/bibfiles
+\newcommand{\citationmark}{%
+    \footnotemark
+}
+
+\newcommand{\checkedCitationmark}[1]{
+    \def\citationAuthor{}
+    \def\citationNote{}
+    \pgfkeys{/citation/.cd, #1}
+    \ifx\citationAuthor\empty\else
+        \ifx\citationNote\empty\else
+            \ifnum\value{footnote} < 9
+                \hspace{-3.5ex}
+            \else
+                \hspace{-4ex}
+            \fi
+            \footnotemark
+        \fi
+    \fi
+}
+
+% Der citationtext gibt die Möglichkeit von der citationsmarke weg
+% zu springen und noch mehr informationen zu liefern. Zum Beispiel
+% Seitenzahlen wären hier gut denkbar.
+%
+% #1 %ist optional kann aber Informationen in Form einer Liste zur
+% Quelle enthalten. Zum Beispiel eine Referenz zu einem der .bib -
+% files in lib/bibfiles
+\newcommand{\citationtext}[1]{
+    \def\citationAuthor{}
+    \def\citationNote{}
+    \pgfkeys{/citation/.cd, #1}
+    \ifx\citationAuthor\empty\else
+        \ifx\citationNote\empty\else
+            \footnotetext{%
+                \citeauthor{\citationAuthor}: %
+                \citationNote{} \cite{\citationAuthor} %
+                \citeurl{\citationAuthor}%
+            }
+        \fi
+    \fi
+}
+
+
+\renewcommand{\quote}[2][]{%
+    \glqq #2\grqq{}
+    \hspace{-0.5ex}
+    \citationmark
+    \hspace{-4.5ex}
+    \citationtext{#1}
+    %\footnotemark
+    %\footnotetext{%
+    %    \citeauthor{#2}: #3 \cite{#2} \citeurl{#2}
+    %}
+}
+
+\newcommand{\source}[1]{%
+    \hspace{-0.5ex}
+    \citationmark
+    \hspace{-4.5ex}
+    \citationtext{#1}
+    %\footnotemark
+    %\footnotetext{%
+    %    \citeauthor{#1}: #2 \cite{#1} \citeurl{#1}
+    %}
+}
