@@ -10,6 +10,11 @@
             \ifx#1\empty\else
                 \def\tblCitation{#1}
             \fi
+        },
+        width/.code = {%
+            \ifx#1\empty\else
+                \def\tblWidth{#1}
+            \fi
         }
 }
 
@@ -48,7 +53,11 @@
                             %kann noch ein Default Titel eingestellt werden
     \def\tblCaption{}
     \def\tblCitation{}
+    \def\tblWidth{}
     \pgfkeys{/tbl/.cd, #1}
+    \ifx\tblWidth\empty
+        \def\tblWidth{\textwidth}
+    \fi
     \NewTblrTheme{theme}{
         \DefTblrTemplate{contfoot-text}{theme}{Fortsetzung auf der nächsten Seite}
         \SetTblrTemplate{contfoot-text}{theme}
@@ -58,7 +67,8 @@
         \SetTblrTemplate{conthead}{theme}
         \DefTblrTemplate{caption-tag}{theme}{Tabelle \thesection.\arabic{tbl}}
         \SetTblrTemplate{caption-tag}{theme}
-        \DefTblrTemplate{caption-sep}{theme}{\checkedCitationmark{#1}: }
+        \DefTblrTemplate{caption-sep}{theme}{: }
+        %\DefTblrTemplate{caption-sep}{theme}{\checkedCitationmark{#1}: }
         \SetTblrTemplate{caption-sep}{theme}
         \DefTblrTemplate{caption-text}{theme}{\tblCaption}
         \SetTblrTemplate{caption-text}{theme}
@@ -67,7 +77,7 @@
         long,
         theme=theme
     ]{
-        width=\textwidth,
+        width=\tblWidth,
         colspec={#2},
         column{1} = {%
                 preto={%

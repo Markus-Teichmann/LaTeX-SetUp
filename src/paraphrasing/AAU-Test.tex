@@ -1,0 +1,57 @@
+\setul{0.3ex}{0.3ex} %1te ist der Abstand zum Text 2te ist die Dicke der linie. ex ist eine von der Buchstanbengröße abhängige Maßeinheit.
+
+\definecolor{aauDarkerBlue}{RGB}{4,62,80}
+\definecolor{aauDarkBlue}{RGB}{37,82,99}
+\definecolor{aauBlue}{RGB}{44,98,118}
+\definecolor{aauLightBlue}{RGB}{4,121,156}
+\definecolor{aauLighterBlue}{RGB}{56,129,156}
+\definecolor{aauLightningBlue}{RGB}{6,140,179}
+\definecolor{aauLightestBlue}{RGB}{7,179,230}
+
+\titleformat{\section}[hang]
+	{\setulcolor{aauBlue} \normalfont \bfseries}
+    {\hspace{0cm} \huge \color{aauBlue}}
+	{0em}
+    {\huge \ul}
+	[]
+
+\titlespacing*{\section}{0em}{1ex}{1ex}
+
+\titleformat{\subsection}[hang]
+	{\setulcolor{aauLightBlue} \normalfont \bfseries}
+    {\hspace{0.5cm} \LARGE \color{aauLightBlue} \ul{\thesubsection \,|\,}}
+	{0em}
+    {\LARGE \ul}
+	[]
+
+\titlespacing*{\subsection}{0em}{1ex}{1ex}
+
+\titleformat{\subsubsection}[hang]
+	{\setulcolor{aauLighterBlue} \normalfont \bfseries}
+    {\hspace{1cm} \Large \color{aauLighterBlue} \ul{\thesubsubsection \,|\,}}
+	{0em}
+    {\Large \ul}
+	[]
+
+\titlespacing*{\subsubsection}{0em}{0.5ex}{1ex}
+
+\titleformat{\paragraph}[hang]
+    {\setulcolor{aauLightningBlue} \normalfont \bfseries}
+    {\hspace{0cm} \normalsize}
+	{0em}
+	{\normalsize \ul}
+    []
+
+\titlespacing*{\paragraph}{0em}{1ex}{0em}
+
+
+%\tiny
+%\scriptsize
+%\footnotesize
+%\small
+%\normalsize
+%\large
+%\Large
+%\LARGE
+%\huge
+%\Huge
