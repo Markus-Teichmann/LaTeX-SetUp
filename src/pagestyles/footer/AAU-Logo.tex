@@ -1,0 +1,24 @@
+\definecolor{aauDarkerBlue}{RGB}{4,62,80}
+\definecolor{aauBlue}{RGB}{44,98,118}
+%Braucht das Packet fancyhdr.
+\fancyfoot[LO]{
+    \includesvg{2cm}{Universitaet_klagenfurt_logo}
+}
+\fancyfoot[LE]{
+    \color{aauBlue} \thepage
+}
+\fancyfoot[C]{}
+\fancyfoot[RO]{
+    \color{aauBlue} \thepage
+}
+\fancyfoot[RE]{
+    \includesvg{2cm}{Universitaet_klagenfurt_logo}
+}
+\renewcommand{\footrule}{\hspace{1mm} \color{aauDarkerBlue} \hrule height \defaultFooterRuleWidth}
+\renewcommand{\footrulewidth}{\defaultFooterRuleWidth}
+%\thepage       %Nummer der aktuellen Seite
+%\leftmark      %Aktueller Kapitelname
+%\rightmark     %Aktueller Unterkapitelname
+%\chaptername   %Das Wort:"Kapitel"
+%\thechapter    %Aktuelle Kapitelnummerrierung
+%\thesection    %Aktuelle Teilnummerierung

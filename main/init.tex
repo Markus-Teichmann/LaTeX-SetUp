@@ -35,17 +35,17 @@
 
 \AfterEndPreamble{
     % Einstellungen für die Titelseite und das Inhaltsverzeichnis:
-        \input{main/titlepage} \label{in:titlepage}      % Natürlich nur, wenn man eine Titlepage.
-        \blankPage
-        \setThisPagestyle{AAU-TOC}                      % Natürlich nur, wenn toc etwünscht.
-        \tableofcontents{}                            % Natürlich nur, wenn toc etwünscht.
-        \newpage                                    % Notwendig.
+        %\input{main/titlepage} \label{in:titlepage}      % Natürlich nur, wenn man eine Titlepage.
+        %\blankPage
+        %\setThisPagestyle{AAU-TOC}                      % Natürlich nur, wenn toc etwünscht.
+        %\tableofcontents{}                            % Natürlich nur, wenn toc etwünscht.
+        %\newpage                                    % Notwendig.
 
     % Style-Entscheidungen, welche dann für das gesamte Dokument gelten
         %\captionsetup[figure]{labelformat=empty}   % Falls nötig, so lässt sich damit die Beschriftung von Abbildungen umgehen
         \setCitationstyle{myStyle}
         \setCodestyle{springboot}                     % Stil des Quellcodes, falls wir welchen verwenden.
-        \setPagestyle{AAU}                      % Header und Footer - global
+        \setPagestyle{AAU-Logo}                      % Header und Footer - global
         \setParaphrasing{AAU}          % Hier geht es um die Überschriften etc.
     
     % Hier legen wir noch die Umgebungen fest die wir im laufe des
@@ -57,6 +57,6 @@
 
 \AtEndDocument{
     % Einstellungen für das Literaturverzeichnis und den Anhang
-        \lit
+        %\lit
         %\anhang
 }
