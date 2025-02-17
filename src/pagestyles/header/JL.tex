@@ -1,0 +1,37 @@
+\definecolor{JungeLinkeRot}{RGB}{175,0,0}
+%Braucht das Packet fancyhdr.
+%Braucht das Packet xString.
+\lhead{
+    \pbox{0.35\textwidth}{
+        \color{JungeLinkeRot} {\itshape \extralight{\sectionName}}
+        \vspace{-2mm}
+    }
+}
+\chead{}
+\rhead{%
+    \ifnum\value{subsection} > 0 {
+        \pbox{0.35\textwidth}{
+            \color{JungeLinkeRot} {\itshape \extralight{\subSectionName}}
+            \vspace{-2mm}
+        }
+    }
+    \fi
+}
+\renewcommand{\headrule}{%
+    \vspace{-1mm} \hspace{1mm} \color{JungeLinkeRot} \hrule height \defaultHeaderRuleWidth
+}
+%\renewcommand{\headrulewidth}{\defaultHeaderRuleWidth}
+\setlength{\headheight}{16pt}
+\setlength{\headsep}{5mm} %Hier sollte eigentlich die Höhe 
+%der pbox stehen bin aber jetzt nicht dazu gekommen die zu
+%ermitteln. Sie ist jedoch sicher nicht immer gleich 1cm
+
+%\thepage           %Nummer der aktuellen Seite
+%\leftmark          %Aktueller Kapitelname
+%\rightmark         %Aktueller Unterkapitelname
+%\chaptername       %Das Wort:"Kapitel"
+%\thechapter        %Aktuelle Kapitelnummerrierung
+%\thesection        %Aktuelle Teilnummerierung
+%\sectionName       %Haben wir in pagestyles.tex definiert.
+%\subSectionName    %Haben wir in pagestyles.tex definiert.
+%\thesubsection     %Aktuelle Nummerrierung der Subsection.

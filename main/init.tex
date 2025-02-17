@@ -6,6 +6,7 @@
 \input{src/citationstyles.tex}
 \input{src/crossreferencing.tex}
 \input{src/dateformat.tex}
+\input{src/fontspec.tex}
 \input{src/gaps.tex}
 \input{src/listings}
 \input{src/multicol.tex}
@@ -28,31 +29,38 @@
 \setPagestylePath{src/pagestyles}
 \setParaphrasingPath{src/paraphrasing}
 \setTitledFramePath{src/titled-frames}
+\setFontstylePath{src/fonts}
 
 \addlibresource % defined in src/biblatex.tex
 \setDefaultHeaderRuleWidth{1pt}
 \setDefaultFooterRuleWidth{1pt}
 
+% Hier legen wir einige Style entscheidungen fest, die für das gesamte
+% Dokument gelten werden, die innerhalb der Preamble definiert werden
+% können, oder müssen:
+    \setFontstyle{SugoPro}
+    \setCitationstyle{myStyle}
+    \setCodestyle{springboot}                          % Stil des Quellcodes, falls wir welchen verwenden.
+    
+% Hier legen wir noch die Umgebungen fest die wir im laufe des
+% Dokuments verwenden werden, also alle möglichen Kästen die wir mit
+% den Stilen bauen können:
+    \setEnvironment{Sagemath}{gray-white}  
+    \setEnvironment[titlestyle=default]{Definition}{light-blue}
+    \setEnvironment[titlestyle=default]{Aufgabe}{light-gray}
+
+
 \AfterEndPreamble{
     % Einstellungen für die Titelseite und das Inhaltsverzeichnis:
-        %\input{main/titlepage} \label{in:titlepage}      % Natürlich nur, wenn man eine Titlepage.
+        %\input{main/titlepage} \label{in:titlepage}     % Natürlich nur, wenn man eine Titlepage haben möchte.
         %\blankPage
         %\setThisPagestyle{AAU-TOC}                      % Natürlich nur, wenn toc etwünscht.
-        %\tableofcontents{}                            % Natürlich nur, wenn toc etwünscht.
-        %\newpage                                    % Notwendig.
+        %\tableofcontents{}                              % Natürlich nur, wenn toc etwünscht.
+        %\newpage                                        % Notwendig.
 
-    % Style-Entscheidungen, welche dann für das gesamte Dokument gelten
-        %\captionsetup[figure]{labelformat=empty}   % Falls nötig, so lässt sich damit die Beschriftung von Abbildungen umgehen
-        \setCitationstyle{myStyle}
-        \setCodestyle{springboot}                     % Stil des Quellcodes, falls wir welchen verwenden.
-        \setPagestyle{AAU-Test}                      % Header und Footer - global
-        \setParaphrasing{AAU-Test}          % Hier geht es um die Überschriften etc.
-    
-    % Hier legen wir noch die Umgebungen fest die wir im laufe des
-    % Dokuments verwenden werden:
-        %\setEnvironment{Sagemath}{gray-white}     % Alle möglichen Kästen die wir mit den Stilen bauen können.
-        \setEnvironment[titlestyle=default]{Definition}{light-blue}  % Neue Umgebung.
-        %\setEnvironment[default]{Aufgabe}{light-gray}
+    % Style-Entscheidungen, welche dann für das gesamte Dokument gelten:
+        \setPagestyle{JL}                         % Header und Footer - global
+        \setParaphrasing{JL}                      % Hier geht es um die Überschriften etc.
 }
 
 \AtEndDocument{
@@ -60,3 +68,7 @@
         %\lit
         %\anhang
 }
+
+% Funktioniert nicht mehr, war davor in \AfterEndPreamble: 
+% \captionsetup[figure]{labelformat=empty}   % Falls nötig, so lässt
+% sich damit die Beschriftung von Abbildungen umgehen

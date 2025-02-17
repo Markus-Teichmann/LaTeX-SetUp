@@ -1,0 +1,36 @@
+\definecolor{JungeLinkeRot}{RGB}{175,0,0}
+%Braucht das Packet fancyhdr.
+\fancyfoot[LO]{
+    \includegraphics[width=2cm]{lib/img/png/junge-linke-kaernten-logo.png}
+}
+\fancyfoot[LE]{
+    \parbox{2cm}{
+        \centering
+        \color{JungeLinkeRot} {\itshape \extralight{\thepage}}
+        \vspace{3mm}
+    }
+}
+\fancyfoot[C]{
+    \pbox{0.3\textwidth}{
+        \color{JungeLinkeRot} {\itshape \extralight{\currentDate}}
+        \vspace{3mm}
+    }
+}
+\fancyfoot[RO]{
+    \parbox{2cm}{
+        \centering
+        \color{JungeLinkeRot} {\itshape \extralight{\thepage}}
+        \vspace{3mm}
+    }
+}
+\fancyfoot[RE]{
+    \includegraphics[width=2cm]{lib/img/png/junge-linke-kaernten-logo.png}
+}
+\renewcommand{\footrule}{\hspace{1mm} \color{JungeLinkeRot} \hrule height \defaultFooterRuleWidth}
+\renewcommand{\footrulewidth}{\defaultFooterRuleWidth}
+%\thepage       %Nummer der aktuellen Seite
+%\leftmark      %Aktueller Kapitelname
+%\rightmark     %Aktueller Unterkapitelname
+%\chaptername   %Das Wort:"Kapitel"
+%\thechapter    %Aktuelle Kapitelnummerrierung
+%\thesection    %Aktuelle Teilnummerierung
