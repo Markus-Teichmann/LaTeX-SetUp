@@ -14,9 +14,8 @@
 !src/titled-frames/frame-title-label-styles/*.tex
 !src/titled-frames/frame-title-styles/*.tex
 !main/*.tex
-lib/*/
 !lib/bibfiles/*.bib
-!lib/fonts/*/
+!lib/fonts/*/*
 !lib/img/png/junge-linke-kaernten-logo.png
 !lib/img/svg/Universitaet_klagenfurt_logo.pdf
 !lib/img/svg/Universitaet_klagenfurt_logo.pdf_tex
