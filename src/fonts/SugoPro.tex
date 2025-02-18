@@ -1,0 +1,62 @@
+\setmainfont{SugoPro}[
+    Path=./lib/fonts/SugoPro/,
+    Extension = .otf,
+    UprightFont=     Sugo-Pro-Classic-Regular,
+    BoldFont=        Sugo-Pro-Classic-Bold,
+    ItalicFont=      Sugo-Pro-Classic-Italic,
+    BoldItalicFont=  Sugo-Pro-Classic-Bold-Italic,
+    % - Upright:
+    FontFace={r}{n}{Sugo-Pro-Classic-Regular},
+    FontFace={l}{n}{Sugo-Pro-Classic-Light},
+    FontFace={xl}{n}{Sugo-Pro-Classic-ExtraLight},
+    FontFace={t}{n}{Sugo-Pro-Classic-Thin},
+    % - Italic:
+    FontFace={r}{it}{Sugo-Pro-Classic-Italic},
+    FontFace={l}{it}{Sugo-Pro-Classic-Light-Italic},
+    FontFace={xl}{it}{Sugo-Pro-Classic-ExtraLight-Italic},
+    FontFace={t}{it}{Sugo-Pro-Classic-Thin-Italic},
+    ]
+\newcommand{\regular}[1]{%
+    {\rmfamily \fontseries{r}\selectfont #1}
+}
+\newcommand{\light}[1]{%
+    {\rmfamily \fontseries{l}\selectfont #1}
+}
+\newcommand{\extralight}[1]{%
+    {\rmfamily \fontseries{xl}\selectfont #1}
+}
+\newcommand{\thin}[1]{%
+    {\rmfamily \fontseries{t}\selectfont #1}
+}
+
+% Hier setzen wir die default Schriftart des Dokuments.
+\AfterBeginDocument{
+    \rmfamily \fontseries{xl} \fontsize{14}{15.5} \selectfont
+}
+
+%% Hier nur für Testzwecke direkt zu Begin des Dokuments:
+%% Ja für Bold muss einfach eine stärke hochgestellt werden, leider ist
+%% mir hier noch kein automatischer Weg eingefallen.
+%\AfterBeginDocument{
+%    \noindent
+%    Ohne Specials:\\
+%        \regular{Regular}\\
+%        \light{Light}\\
+%        \extralight{Extralight}\\ 
+%        \thin{Thin}\newline 
+%
+%    Bold:\\
+%        \regular{\bfseries Regular}\\
+%        \regular{Light}\\
+%        \light{Extralight}\\
+%        \extralight{Thin}\newline
+%%
+%    Italic:\\
+%    {\itshape
+%        \regular{Regular}\\
+%        \light{Light}\\
+%        \extralight{Extralight}\\
+%        \thin{Thin}\newline
+%    }
+%    \newpage
+%}

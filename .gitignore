@@ -5,6 +5,7 @@
 !src/*.tex
 !src/citationstyles/*.tex
 !src/codestyles/*.tex
+!src/fonts/*.tex
 !src/pagestyles/*.tex
 !src/pagestyles/footer/*.tex
 !src/pagestyles/header/*.tex
@@ -15,6 +16,8 @@
 !main/*.tex
 lib/*/
 !lib/bibfiles/*.bib
+!lib/fonts/*/
+!lib/img/png/junge-linke-kaernten-logo.png
 !lib/img/svg/Universitaet_klagenfurt_logo.pdf
 !lib/img/svg/Universitaet_klagenfurt_logo.pdf_tex
 !lib/img/svg/Universitaet_klagenfurt_logo.svg
