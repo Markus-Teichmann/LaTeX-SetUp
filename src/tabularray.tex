@@ -15,6 +15,9 @@
             \ifx#1\empty\else
                 \def\tblWidth{#1}
             \fi
+        },
+        noCaptionTag/.code = {%
+            \def\tblNoCaptionTag{}
         }
 }
 
@@ -56,7 +59,14 @@
     \def\tblWidth{}
     \pgfkeys{/tbl/.cd, #1}
     \ifx\tblWidth\empty
-        \def\tblWidth{\textwidth}
+        \def\tblWidth{\textwidth} %Default Value for width
+    \fi
+    \ifx\tblNoCaptionTag\empty
+        \def\tblCaptionTag{}
+        \def\tblCaptionSep{}
+    \else
+        \def\tblCaptionTag{Tabelle \thesection.\arabic{tbl}}
+        \def\tblCaptionSep{: }
     \fi
     \NewTblrTheme{theme}{
         \DefTblrTemplate{contfoot-text}{theme}{Fortsetzung auf der nächsten Seite}
@@ -65,9 +75,9 @@
         \SetTblrTemplate{conthead-text}{theme}
         \DefTblrTemplate{conthead}{theme}{Tabelle \thesection.\arabic{tbl}}
         \SetTblrTemplate{conthead}{theme}
-        \DefTblrTemplate{caption-tag}{theme}{Tabelle \thesection.\arabic{tbl}}
+        \DefTblrTemplate{caption-tag}{theme}{\tblCaptionTag}
         \SetTblrTemplate{caption-tag}{theme}
-        \DefTblrTemplate{caption-sep}{theme}{: }
+        \DefTblrTemplate{caption-sep}{theme}{\tblCaptionSep}
         %\DefTblrTemplate{caption-sep}{theme}{\checkedCitationmark{#1}: }
         \SetTblrTemplate{caption-sep}{theme}
         \DefTblrTemplate{caption-text}{theme}{\tblCaption}
