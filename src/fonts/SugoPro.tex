@@ -34,6 +34,17 @@
     \rmfamily \fontseries{xl} \fontsize{14}{15.5} \selectfont
 }
 
+% Vorraussetzung für den folgenden Befehl:
+%\rmfamily \fontseries{t}\selectfont 
+\renewcommand*{\thefootnote}{%
+    \thin{\arabic{footnote}}
+}
+
+% Eigentlich cooler Befehl aber von der Schrift abhängig...
+\newcommand{\annotate}[2]{%
+    \glqq #1\grqq \footnotemark \footnotetext{\thin{#2}} \hspace{-1.5ex}
+}
+
 %% Hier nur für Testzwecke direkt zu Begin des Dokuments:
 %% Ja für Bold muss einfach eine stärke hochgestellt werden, leider ist
 %% mir hier noch kein automatischer Weg eingefallen.
